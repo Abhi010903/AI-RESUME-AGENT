@@ -1,0 +1,13 @@
+{
+	"name": "reactive-resume",
+	"owner": { "name": "AI Resume Agent", "email": "admin@airesumeagent.internal" },
+	"description": "The AI Resume Agent plugin: job-search skills and the AI Resume Agent MCP server.",
+	"plugins": [
+		{
+			"name": "reactive-resume",
+			"source": "./plugins/reactive-resume",
+			"category": "productivity",
+			"tags": ["resume", "job-search", "mcp"]
+		}
+	]
+}

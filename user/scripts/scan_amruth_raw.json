@@ -1,0 +1,1646 @@
+[
+  {
+    "file": "README.md",
+    "line": 20,
+    "matchedTerm": "Amruth Pillai",
+    "text": "│   └── LICENSE              # Original MIT License notice (Amruth Pillai)"
+  },
+  {
+    "file": "README.md",
+    "line": 91,
+    "matchedTerm": "Amruth Pillai",
+    "text": "AI Resume Agent candidate application is a derivative project built upon **Reactive Resume** by Amruth Pillai."
+  },
+  {
+    "file": "README.md",
+    "line": 96,
+    "matchedTerm": "Amruth Pillai",
+    "text": "Copyright (c) 2026 Amruth Pillai"
+  },
+  {
+    "file": "user/.agents/docs/runbooks/container-publishing.md",
+    "line": 161,
+    "matchedTerm": "github-amruth",
+    "text": "--certificate-identity https://github.com/amruthpillai/reactive-resume/.github/workflows/docker-build.yml@refs/heads/main \\"
+  },
+  {
+    "file": "user/.claude-plugin/marketplace.json",
+    "line": 3,
+    "matchedTerm": "Amruth Pillai",
+    "text": "\"owner\": { \"name\": \"Amruth Pillai\", \"email\": \"amruth@rxresu.me\" },"
+  },
+  {
+    "file": "user/.github/.well-known/funding.json",
+    "line": 7,
+    "matchedTerm": "Amruth Pillai",
+    "text": "\"name\": \"Amruth Pillai\","
+  },
+  {
+    "file": "user/.github/.well-known/funding.json",
+    "line": 8,
+    "matchedTerm": "amruth@rxresu.me",
+    "text": "\"email\": \"amruth@rxresu.me\","
+  },
+  {
+    "file": "user/.github/workflows/docker-publish.yml",
+    "line": 342,
+    "matchedTerm": "Amruth Pillai",
+    "text": "--annotation \"index:org.opencontainers.image.vendor=Amruth Pillai\" \\"
+  },
+  {
+    "file": "user/apps/mobile/PLAN.md",
+    "line": 4,
+    "matchedTerm": "amruth",
+    "text": "specification is the handoff bundle at `/Users/amruth/Projects/reactive-resume/.agents/handoff/mobile-final`"
+  },
+  {
+    "file": "user/apps/mobile/PLAN.md",
+    "line": 83,
+    "matchedTerm": "amruth",
+    "text": "1. Work in `/Users/amruth/Projects/reactive-resume/apps/mobile` on branch `feat/mobile-next`. Never commit, stash,"
+  },
+  {
+    "file": "user/apps/mobile/PLAN.md",
+    "line": 95,
+    "matchedTerm": "amruth",
+    "text": "5. Repo rules (`/Users/amruth/Projects/reactive-resume/CLAUDE.md`): no AI attribution, no credentials or personal"
+  },
+  {
+    "file": "user/apps/mobile/PLAN.md",
+    "line": 275,
+    "matchedTerm": "amruth",
+    "text": "B=/Users/amruth/Projects/reactive-resume/.agents/handoff/mobile-final"
+  },
+  {
+    "file": "user/apps/server/src/static/seo.ts",
+    "line": 146,
+    "matchedTerm": "Amruth Pillai",
+    "text": "\"- AI Resume Agent includes software originally developed as Reactive Resume by Amruth Pillai, licensed under the MIT License.\","
+  },
+  {
+    "file": "user/apps/web/locales/af-ZA.po",
+    "line": 2291,
+    "matchedTerm": "Amruth Pillai",
+    "text": "#. Email footer. author: Amruth Pillai, linked"
+  },
+  {
+    "file": "user/apps/web/locales/af-ZA.po",
+    "line": 15559,
+    "matchedTerm": "Amruth Pillai",
+    "text": "msgid \"Reactive Resume is open source under the MIT License. Amruth Pillai and a community of contributors keep it running, and donations pay for hosting and development. There’s no paid tier.\""
+  },
+  {
+    "file": "user/apps/web/locales/af-ZA.po",
+    "line": 15560,
+    "matchedTerm": "Amruth Pillai",
+    "text": "msgstr \"Reactive Resume is oopbron onder die MIT-lisensie. Amruth Pillai en 'n gemeenskap van bydraers hou dit aan die gang, en skenkings betaal vir hosting en ontwikkeling. Daar is geen betaalde vlak nie.\""
+  },
+  {
+    "file": "user/apps/web/locales/am-ET.po",
+    "line": 2291,
+    "matchedTerm": "Amruth Pillai",
+    "text": "#. Email footer. author: Amruth Pillai, linked"
+  },
+  {
+    "file": "user/apps/web/locales/am-ET.po",
+    "line": 15559,
+    "matchedTerm": "Amruth Pillai",
+    "text": "msgid \"Reactive Resume is open source under the MIT License. Amruth Pillai and a community of contributors keep it running, and donations pay for hosting and development. There’s no paid tier.\""
+  },
+  {
+    "file": "user/apps/web/locales/am-ET.po",
+    "line": 15560,
+    "matchedTerm": "Amruth Pillai",
+    "text": "msgstr \"Reactive Resume በMIT ፈቃድ ስር ክፍት ምንጭ ነው። Amruth Pillai እና የአስተዋጽዖ አበርካቾች ማኅበረሰብ ያስቀጥሉታል፣ ልገሳዎችም ለማስተናገጃ እና ለልማት ይከፍላሉ። የሚከፈልበት ደረጃ የለም።\""
+  },
+  {
+    "file": "user/apps/web/locales/ar-SA.po",
+    "line": 2291,
+    "matchedTerm": "Amruth Pillai",
+    "text": "#. Email footer. author: Amruth Pillai, linked"
+  },
+  {
+    "file": "user/apps/web/locales/ar-SA.po",
+    "line": 15559,
+    "matchedTerm": "Amruth Pillai",
+    "text": "msgid \"Reactive Resume is open source under the MIT License. Amruth Pillai and a community of contributors keep it running, and donations pay for hosting and development. There’s no paid tier.\""
+  },
+  {
+    "file": "user/apps/web/locales/ar-SA.po",
+    "line": 15560,
+    "matchedTerm": "Amruth Pillai",
+    "text": "msgstr \"Reactive Resume مفتوح المصدر بموجب ترخيص MIT. يحافظ Amruth Pillai ومجتمع من المساهمين على استمراره، وتغطي التبرعات تكاليف الاستضافة والتطوير. لا توجد باقة مدفوعة.\""
+  },
+  {
+    "file": "user/apps/web/locales/az-AZ.po",
+    "line": 2291,
+    "matchedTerm": "Amruth Pillai",
+    "text": "#. Email footer. author: Amruth Pillai, linked"
+  },
+  {
+    "file": "user/apps/web/locales/az-AZ.po",
+    "line": 15559,
+    "matchedTerm": "Amruth Pillai",
+    "text": "msgid \"Reactive Resume is open source under the MIT License. Amruth Pillai and a community of contributors keep it running, and donations pay for hosting and development. There’s no paid tier.\""
+  },
+  {
+    "file": "user/apps/web/locales/az-AZ.po",
+    "line": 15560,
+    "matchedTerm": "Amruth Pillai",
+    "text": "msgstr \"Reactive Resume MIT Lisenziyası ilə açıq mənbəlidir. Amruth Pillai və töhfəçilər icması onu işlək saxlayır, ianələr isə hostinq və inkişafı maliyyələşdirir. Ödənişli plan yoxdur.\""
+  },
+  {
+    "file": "user/apps/web/locales/bg-BG.po",
+    "line": 2291,
+    "matchedTerm": "Amruth Pillai",
+    "text": "#. Email footer. author: Amruth Pillai, linked"
+  },
+  {
+    "file": "user/apps/web/locales/bg-BG.po",
+    "line": 15559,
+    "matchedTerm": "Amruth Pillai",
+    "text": "msgid \"Reactive Resume is open source under the MIT License. Amruth Pillai and a community of contributors keep it running, and donations pay for hosting and development. There’s no paid tier.\""
+  },
+  {
+    "file": "user/apps/web/locales/bg-BG.po",
+    "line": 15560,
+    "matchedTerm": "Amruth Pillai",
+    "text": "msgstr \"Reactive Resume е с отворен код под лиценза MIT. Amruth Pillai и общност от сътрудници го поддържат, а даренията покриват хостинга и разработката. Няма платен план.\""
+  },
+  {
+    "file": "user/apps/web/locales/bn-BD.po",
+    "line": 2291,
+    "matchedTerm": "Amruth Pillai",
+    "text": "#. Email footer. author: Amruth Pillai, linked"
+  },
+  {
+    "file": "user/apps/web/locales/bn-BD.po",
+    "line": 15559,
+    "matchedTerm": "Amruth Pillai",
+    "text": "msgid \"Reactive Resume is open source under the MIT License. Amruth Pillai and a community of contributors keep it running, and donations pay for hosting and development. There’s no paid tier.\""
+  },
+  {
+    "file": "user/apps/web/locales/bn-BD.po",
+    "line": 15560,
+    "matchedTerm": "Amruth Pillai",
+    "text": "msgstr \"Reactive Resume MIT লাইসেন্সের অধীনে ওপেন সোর্স। Amruth Pillai এবং অবদানকারীদের একটি কমিউনিটি এটি চালু রাখেন, আর দানের অর্থে হোস্টিং ও উন্নয়নের খরচ চলে। কোনো পেইড টিয়ার নেই।\""
+  },
+  {
+    "file": "user/apps/web/locales/ca-ES.po",
+    "line": 2291,
+    "matchedTerm": "Amruth Pillai",
+    "text": "#. Email footer. author: Amruth Pillai, linked"
+  },
+  {
+    "file": "user/apps/web/locales/ca-ES.po",
+    "line": 15559,
+    "matchedTerm": "Amruth Pillai",
+    "text": "msgid \"Reactive Resume is open source under the MIT License. Amruth Pillai and a community of contributors keep it running, and donations pay for hosting and development. There’s no paid tier.\""
+  },
+  {
+    "file": "user/apps/web/locales/ca-ES.po",
+    "line": 15560,
+    "matchedTerm": "Amruth Pillai",
+    "text": "msgstr \"Reactive Resume és de codi obert amb la llicència MIT. Amruth Pillai i una comunitat de col·laboradors el mantenen en marxa, i les donacions paguen l'allotjament i el desenvolupament. No hi ha cap pla de pagament.\""
+  },
+  {
+    "file": "user/apps/web/locales/cs-CZ.po",
+    "line": 2291,
+    "matchedTerm": "Amruth Pillai",
+    "text": "#. Email footer. author: Amruth Pillai, linked"
+  },
+  {
+    "file": "user/apps/web/locales/cs-CZ.po",
+    "line": 15559,
+    "matchedTerm": "Amruth Pillai",
+    "text": "msgid \"Reactive Resume is open source under the MIT License. Amruth Pillai and a community of contributors keep it running, and donations pay for hosting and development. There’s no paid tier.\""
+  },
+  {
+    "file": "user/apps/web/locales/cs-CZ.po",
+    "line": 15560,
+    "matchedTerm": "Amruth Pillai",
+    "text": "msgstr \"Reactive Resume je open source pod licencí MIT. Amruth Pillai a komunita přispěvatelů ho udržují v chodu a dary platí hosting a vývoj. Neexistuje žádný placený tarif.\""
+  },
+  {
+    "file": "user/apps/web/locales/da-DK.po",
+    "line": 2291,
+    "matchedTerm": "Amruth Pillai",
+    "text": "#. Email footer. author: Amruth Pillai, linked"
+  },
+  {
+    "file": "user/apps/web/locales/da-DK.po",
+    "line": 15559,
+    "matchedTerm": "Amruth Pillai",
+    "text": "msgid \"Reactive Resume is open source under the MIT License. Amruth Pillai and a community of contributors keep it running, and donations pay for hosting and development. There’s no paid tier.\""
+  },
+  {
+    "file": "user/apps/web/locales/da-DK.po",
+    "line": 15560,
+    "matchedTerm": "Amruth Pillai",
+    "text": "msgstr \"Reactive Resume er open source under MIT-licensen. Amruth Pillai og et fællesskab af bidragydere holder det kørende, og donationer betaler for hosting og udvikling. Der er ingen betalt version.\""
+  },
+  {
+    "file": "user/apps/web/locales/de-DE.po",
+    "line": 2291,
+    "matchedTerm": "Amruth Pillai",
+    "text": "#. Email footer. author: Amruth Pillai, linked"
+  },
+  {
+    "file": "user/apps/web/locales/de-DE.po",
+    "line": 15559,
+    "matchedTerm": "Amruth Pillai",
+    "text": "msgid \"Reactive Resume is open source under the MIT License. Amruth Pillai and a community of contributors keep it running, and donations pay for hosting and development. There’s no paid tier.\""
+  },
+  {
+    "file": "user/apps/web/locales/de-DE.po",
+    "line": 15560,
+    "matchedTerm": "Amruth Pillai",
+    "text": "msgstr \"Reactive Resume ist Open Source unter der MIT-Lizenz. Amruth Pillai und eine Community von Mitwirkenden halten es am Laufen, und Spenden finanzieren Hosting und Entwicklung. Es gibt keine kostenpflichtige Version.\""
+  },
+  {
+    "file": "user/apps/web/locales/el-GR.po",
+    "line": 2291,
+    "matchedTerm": "Amruth Pillai",
+    "text": "#. Email footer. author: Amruth Pillai, linked"
+  },
+  {
+    "file": "user/apps/web/locales/el-GR.po",
+    "line": 15559,
+    "matchedTerm": "Amruth Pillai",
+    "text": "msgid \"Reactive Resume is open source under the MIT License. Amruth Pillai and a community of contributors keep it running, and donations pay for hosting and development. There’s no paid tier.\""
+  },
+  {
+    "file": "user/apps/web/locales/el-GR.po",
+    "line": 15560,
+    "matchedTerm": "Amruth Pillai",
+    "text": "msgstr \"Το Reactive Resume είναι ανοιχτού κώδικα με την άδεια MIT. Ο Amruth Pillai και μια κοινότητα συνεισφερόντων το διατηρούν σε λειτουργία, και οι δωρεές καλύπτουν τη φιλοξενία και την ανάπτυξη. Δεν υπάρχει έκδοση επί πληρωμή.\""
+  },
+  {
+    "file": "user/apps/web/locales/en-GB.po",
+    "line": 2291,
+    "matchedTerm": "Amruth Pillai",
+    "text": "#. Email footer. author: Amruth Pillai, linked"
+  },
+  {
+    "file": "user/apps/web/locales/en-GB.po",
+    "line": 15559,
+    "matchedTerm": "Amruth Pillai",
+    "text": "msgid \"Reactive Resume is open source under the MIT License. Amruth Pillai and a community of contributors keep it running, and donations pay for hosting and development. There’s no paid tier.\""
+  },
+  {
+    "file": "user/apps/web/locales/en-GB.po",
+    "line": 15560,
+    "matchedTerm": "Amruth Pillai",
+    "text": "msgstr \"Reactive Resume is open source under the MIT License. Amruth Pillai and a community of contributors keep it running, and donations pay for hosting and development. There’s no paid tier.\""
+  },
+  {
+    "file": "user/apps/web/locales/en-US.po",
+    "line": 2291,
+    "matchedTerm": "Amruth Pillai",
+    "text": "#. Email footer. author: Amruth Pillai, linked"
+  },
+  {
+    "file": "user/apps/web/locales/en-US.po",
+    "line": 15559,
+    "matchedTerm": "Amruth Pillai",
+    "text": "msgid \"Reactive Resume is open source under the MIT License. Amruth Pillai and a community of contributors keep it running, and donations pay for hosting and development. There’s no paid tier.\""
+  },
+  {
+    "file": "user/apps/web/locales/en-US.po",
+    "line": 15560,
+    "matchedTerm": "Amruth Pillai",
+    "text": "msgstr \"Reactive Resume is open source under the MIT License. Amruth Pillai and a community of contributors keep it running, and donations pay for hosting and development. There’s no paid tier.\""
+  },
+  {
+    "file": "user/apps/web/locales/es-ES.po",
+    "line": 2291,
+    "matchedTerm": "Amruth Pillai",
+    "text": "#. Email footer. author: Amruth Pillai, linked"
+  },
+  {
+    "file": "user/apps/web/locales/es-ES.po",
+    "line": 15559,
+    "matchedTerm": "Amruth Pillai",
+    "text": "msgid \"Reactive Resume is open source under the MIT License. Amruth Pillai and a community of contributors keep it running, and donations pay for hosting and development. There’s no paid tier.\""
+  },
+  {
+    "file": "user/apps/web/locales/es-ES.po",
+    "line": 15560,
+    "matchedTerm": "Amruth Pillai",
+    "text": "msgstr \"Reactive Resume es de código abierto con licencia MIT. Amruth Pillai y una comunidad de colaboradores lo mantienen, y las donaciones pagan el alojamiento y el desarrollo. No hay plan de pago.\""
+  },
+  {
+    "file": "user/apps/web/locales/fa-IR.po",
+    "line": 2291,
+    "matchedTerm": "Amruth Pillai",
+    "text": "#. Email footer. author: Amruth Pillai, linked"
+  },
+  {
+    "file": "user/apps/web/locales/fa-IR.po",
+    "line": 15559,
+    "matchedTerm": "Amruth Pillai",
+    "text": "msgid \"Reactive Resume is open source under the MIT License. Amruth Pillai and a community of contributors keep it running, and donations pay for hosting and development. There’s no paid tier.\""
+  },
+  {
+    "file": "user/apps/web/locales/fa-IR.po",
+    "line": 15560,
+    "matchedTerm": "Amruth Pillai",
+    "text": "msgstr \"Reactive Resume متن‌باز و تحت مجوز MIT است. Amruth Pillai و جامعه‌ای از مشارکت‌کنندگان آن را سرپا نگه می‌دارند و کمک‌های مالی هزینهٔ میزبانی و توسعه را می‌پردازند. هیچ نسخهٔ پولی وجود ندارد.\""
+  },
+  {
+    "file": "user/apps/web/locales/fi-FI.po",
+    "line": 2291,
+    "matchedTerm": "Amruth Pillai",
+    "text": "#. Email footer. author: Amruth Pillai, linked"
+  },
+  {
+    "file": "user/apps/web/locales/fi-FI.po",
+    "line": 15559,
+    "matchedTerm": "Amruth Pillai",
+    "text": "msgid \"Reactive Resume is open source under the MIT License. Amruth Pillai and a community of contributors keep it running, and donations pay for hosting and development. There’s no paid tier.\""
+  },
+  {
+    "file": "user/apps/web/locales/fi-FI.po",
+    "line": 15560,
+    "matchedTerm": "Amruth Pillai",
+    "text": "msgstr \"Reactive Resume on avointa lähdekoodia MIT-lisenssillä. Amruth Pillai ja avustajien yhteisö pitävät sen käynnissä, ja lahjoitukset kattavat ylläpidon ja kehityksen kulut. Maksullista versiota ei ole.\""
+  },
+  {
+    "file": "user/apps/web/locales/fr-FR.po",
+    "line": 2291,
+    "matchedTerm": "Amruth Pillai",
+    "text": "#. Email footer. author: Amruth Pillai, linked"
+  },
+  {
+    "file": "user/apps/web/locales/fr-FR.po",
+    "line": 15559,
+    "matchedTerm": "Amruth Pillai",
+    "text": "msgid \"Reactive Resume is open source under the MIT License. Amruth Pillai and a community of contributors keep it running, and donations pay for hosting and development. There’s no paid tier.\""
+  },
+  {
+    "file": "user/apps/web/locales/fr-FR.po",
+    "line": 15560,
+    "matchedTerm": "Amruth Pillai",
+    "text": "msgstr \"Reactive Resume est open source sous licence MIT. Amruth Pillai et une communauté de contributeurs le font vivre, et les dons financent l'hébergement et le développement. Il n'existe pas d'offre payante.\""
+  },
+  {
+    "file": "user/apps/web/locales/he-IL.po",
+    "line": 2291,
+    "matchedTerm": "Amruth Pillai",
+    "text": "#. Email footer. author: Amruth Pillai, linked"
+  },
+  {
+    "file": "user/apps/web/locales/he-IL.po",
+    "line": 15559,
+    "matchedTerm": "Amruth Pillai",
+    "text": "msgid \"Reactive Resume is open source under the MIT License. Amruth Pillai and a community of contributors keep it running, and donations pay for hosting and development. There’s no paid tier.\""
+  },
+  {
+    "file": "user/apps/web/locales/he-IL.po",
+    "line": 15560,
+    "matchedTerm": "Amruth Pillai",
+    "text": "msgstr \"Reactive Resume הוא קוד פתוח ברישיון MIT. Amruth Pillai וקהילה של תורמים מתחזקים אותו, ותרומות מממנות את האחסון והפיתוח. אין מסלול בתשלום.\""
+  },
+  {
+    "file": "user/apps/web/locales/hi-IN.po",
+    "line": 2291,
+    "matchedTerm": "Amruth Pillai",
+    "text": "#. Email footer. author: Amruth Pillai, linked"
+  },
+  {
+    "file": "user/apps/web/locales/hi-IN.po",
+    "line": 15559,
+    "matchedTerm": "Amruth Pillai",
+    "text": "msgid \"Reactive Resume is open source under the MIT License. Amruth Pillai and a community of contributors keep it running, and donations pay for hosting and development. There’s no paid tier.\""
+  },
+  {
+    "file": "user/apps/web/locales/hi-IN.po",
+    "line": 15560,
+    "matchedTerm": "Amruth Pillai",
+    "text": "msgstr \"Reactive Resume, MIT लाइसेंस के तहत ओपन सोर्स है। Amruth Pillai और योगदानकर्ताओं का एक समुदाय इसे चलाते हैं, और दान से होस्टिंग और विकास का खर्च चलता है। कोई सशुल्क योजना नहीं है।\""
+  },
+  {
+    "file": "user/apps/web/locales/hu-HU.po",
+    "line": 2291,
+    "matchedTerm": "Amruth Pillai",
+    "text": "#. Email footer. author: Amruth Pillai, linked"
+  },
+  {
+    "file": "user/apps/web/locales/hu-HU.po",
+    "line": 15559,
+    "matchedTerm": "Amruth Pillai",
+    "text": "msgid \"Reactive Resume is open source under the MIT License. Amruth Pillai and a community of contributors keep it running, and donations pay for hosting and development. There’s no paid tier.\""
+  },
+  {
+    "file": "user/apps/web/locales/hu-HU.po",
+    "line": 15560,
+    "matchedTerm": "Amruth Pillai",
+    "text": "msgstr \"A Reactive Resume nyílt forráskódú, MIT licenc alatt. Amruth Pillai és a közreműködők közössége tartja életben, az adományok pedig fedezik a tárhelyet és a fejlesztést. Nincs fizetős csomag.\""
+  },
+  {
+    "file": "user/apps/web/locales/hy-AM.po",
+    "line": 2291,
+    "matchedTerm": "Amruth Pillai",
+    "text": "#. Email footer. author: Amruth Pillai, linked"
+  },
+  {
+    "file": "user/apps/web/locales/hy-AM.po",
+    "line": 15559,
+    "matchedTerm": "Amruth Pillai",
+    "text": "msgid \"Reactive Resume is open source under the MIT License. Amruth Pillai and a community of contributors keep it running, and donations pay for hosting and development. There’s no paid tier.\""
+  },
+  {
+    "file": "user/apps/web/locales/hy-AM.po",
+    "line": 15560,
+    "matchedTerm": "Amruth Pillai",
+    "text": "msgstr \"Reactive Resume-ը բաց կոդով ծրագիր է՝ MIT License-ի ներքո: Amruth Pillai-ն և ներդրողների համայնքը ապահովում են դրա աշխատանքը, իսկ նվիրատվությունները ծածկում են հոսթինգի և մշակման ծախսերը: Վճարովի տարբերակ չկա:\""
+  },
+  {
+    "file": "user/apps/web/locales/id-ID.po",
+    "line": 2291,
+    "matchedTerm": "Amruth Pillai",
+    "text": "#. Email footer. author: Amruth Pillai, linked"
+  },
+  {
+    "file": "user/apps/web/locales/id-ID.po",
+    "line": 15559,
+    "matchedTerm": "Amruth Pillai",
+    "text": "msgid \"Reactive Resume is open source under the MIT License. Amruth Pillai and a community of contributors keep it running, and donations pay for hosting and development. There’s no paid tier.\""
+  },
+  {
+    "file": "user/apps/web/locales/id-ID.po",
+    "line": 15560,
+    "matchedTerm": "Amruth Pillai",
+    "text": "msgstr \"Reactive Resume adalah open source di bawah Lisensi MIT. Amruth Pillai dan komunitas kontributor menjaganya tetap berjalan, dan donasi membiayai hosting serta pengembangan. Tidak ada paket berbayar.\""
+  },
+  {
+    "file": "user/apps/web/locales/it-IT.po",
+    "line": 2291,
+    "matchedTerm": "Amruth Pillai",
+    "text": "#. Email footer. author: Amruth Pillai, linked"
+  },
+  {
+    "file": "user/apps/web/locales/it-IT.po",
+    "line": 15559,
+    "matchedTerm": "Amruth Pillai",
+    "text": "msgid \"Reactive Resume is open source under the MIT License. Amruth Pillai and a community of contributors keep it running, and donations pay for hosting and development. There’s no paid tier.\""
+  },
+  {
+    "file": "user/apps/web/locales/it-IT.po",
+    "line": 15560,
+    "matchedTerm": "Amruth Pillai",
+    "text": "msgstr \"Reactive Resume è open source con licenza MIT. Amruth Pillai e una comunità di collaboratori lo mantengono attivo, e le donazioni pagano hosting e sviluppo. Non esiste un piano a pagamento.\""
+  },
+  {
+    "file": "user/apps/web/locales/ja-JP.po",
+    "line": 2291,
+    "matchedTerm": "Amruth Pillai",
+    "text": "#. Email footer. author: Amruth Pillai, linked"
+  },
+  {
+    "file": "user/apps/web/locales/ja-JP.po",
+    "line": 15559,
+    "matchedTerm": "Amruth Pillai",
+    "text": "msgid \"Reactive Resume is open source under the MIT License. Amruth Pillai and a community of contributors keep it running, and donations pay for hosting and development. There’s no paid tier.\""
+  },
+  {
+    "file": "user/apps/web/locales/ja-JP.po",
+    "line": 15560,
+    "matchedTerm": "Amruth Pillai",
+    "text": "msgstr \"Reactive ResumeはMITライセンスのオープンソースです。Amruth Pillaiとコントリビューターのコミュニティが運営を支え、寄付がホスティングと開発の費用をまかなっています。有料プランはありません。\""
+  },
+  {
+    "file": "user/apps/web/locales/km-KH.po",
+    "line": 2291,
+    "matchedTerm": "Amruth Pillai",
+    "text": "#. Email footer. author: Amruth Pillai, linked"
+  },
+  {
+    "file": "user/apps/web/locales/km-KH.po",
+    "line": 15559,
+    "matchedTerm": "Amruth Pillai",
+    "text": "msgid \"Reactive Resume is open source under the MIT License. Amruth Pillai and a community of contributors keep it running, and donations pay for hosting and development. There’s no paid tier.\""
+  },
+  {
+    "file": "user/apps/web/locales/km-KH.po",
+    "line": 15560,
+    "matchedTerm": "Amruth Pillai",
+    "text": "msgstr \"Reactive Resume គឺជាកូដចំហក្រោមអាជ្ញាប័ណ្ណ MIT។ Amruth Pillai និងសហគមន៍អ្នករួមចំណែកធ្វើឱ្យវាដំណើរការ ហើយការបរិច្ចាគចំណាយលើការបង្ហោះ និងការអភិវឌ្ឍ។ មិនមានកម្រិតបង់ប្រាក់ទេ។\""
+  },
+  {
+    "file": "user/apps/web/locales/kn-IN.po",
+    "line": 2291,
+    "matchedTerm": "Amruth Pillai",
+    "text": "#. Email footer. author: Amruth Pillai, linked"
+  },
+  {
+    "file": "user/apps/web/locales/kn-IN.po",
+    "line": 15559,
+    "matchedTerm": "Amruth Pillai",
+    "text": "msgid \"Reactive Resume is open source under the MIT License. Amruth Pillai and a community of contributors keep it running, and donations pay for hosting and development. There’s no paid tier.\""
+  },
+  {
+    "file": "user/apps/web/locales/kn-IN.po",
+    "line": 15560,
+    "matchedTerm": "Amruth Pillai",
+    "text": "msgstr \"Reactive Resume MIT ಪರವಾನಗಿಯ ಅಡಿಯಲ್ಲಿ ಮುಕ್ತ ಮೂಲವಾಗಿದೆ. Amruth Pillai ಮತ್ತು ಕೊಡುಗೆದಾರರ ಸಮುದಾಯ ಇದನ್ನು ನಡೆಸುತ್ತಾರೆ, ಮತ್ತು ದೇಣಿಗೆಗಳು ಹೋಸ್ಟಿಂಗ್ ಮತ್ತು ಅಭಿವೃದ್ಧಿಯ ವೆಚ್ಚವನ್ನು ಭರಿಸುತ್ತವೆ. ಯಾವುದೇ ಪಾವತಿಸಿದ ಶ್ರೇಣಿ ಇಲ್ಲ.\""
+  },
+  {
+    "file": "user/apps/web/locales/ko-KR.po",
+    "line": 2291,
+    "matchedTerm": "Amruth Pillai",
+    "text": "#. Email footer. author: Amruth Pillai, linked"
+  },
+  {
+    "file": "user/apps/web/locales/ko-KR.po",
+    "line": 15559,
+    "matchedTerm": "Amruth Pillai",
+    "text": "msgid \"Reactive Resume is open source under the MIT License. Amruth Pillai and a community of contributors keep it running, and donations pay for hosting and development. There’s no paid tier.\""
+  },
+  {
+    "file": "user/apps/web/locales/ko-KR.po",
+    "line": 15560,
+    "matchedTerm": "Amruth Pillai",
+    "text": "msgstr \"Reactive Resume는 MIT 라이선스의 오픈 소스입니다. Amruth Pillai와 기여자 커뮤니티가 운영하며, 호스팅과 개발 비용은 기부로 충당합니다. 유료 요금제는 없습니다.\""
+  },
+  {
+    "file": "user/apps/web/locales/lt-LT.po",
+    "line": 2291,
+    "matchedTerm": "Amruth Pillai",
+    "text": "#. Email footer. author: Amruth Pillai, linked"
+  },
+  {
+    "file": "user/apps/web/locales/lt-LT.po",
+    "line": 15559,
+    "matchedTerm": "Amruth Pillai",
+    "text": "msgid \"Reactive Resume is open source under the MIT License. Amruth Pillai and a community of contributors keep it running, and donations pay for hosting and development. There’s no paid tier.\""
+  },
+  {
+    "file": "user/apps/web/locales/lt-LT.po",
+    "line": 15560,
+    "matchedTerm": "Amruth Pillai",
+    "text": "msgstr \"Reactive Resume yra atvirojo kodo programa, platinama pagal MIT licenciją. Ją palaiko Amruth Pillai ir bendraautorių bendruomenė, o aukos padengia prieglobos ir kūrimo išlaidas. Mokamo plano nėra.\""
+  },
+  {
+    "file": "user/apps/web/locales/lv-LV.po",
+    "line": 2291,
+    "matchedTerm": "Amruth Pillai",
+    "text": "#. Email footer. author: Amruth Pillai, linked"
+  },
+  {
+    "file": "user/apps/web/locales/lv-LV.po",
+    "line": 15559,
+    "matchedTerm": "Amruth Pillai",
+    "text": "msgid \"Reactive Resume is open source under the MIT License. Amruth Pillai and a community of contributors keep it running, and donations pay for hosting and development. There’s no paid tier.\""
+  },
+  {
+    "file": "user/apps/web/locales/lv-LV.po",
+    "line": 15560,
+    "matchedTerm": "Amruth Pillai",
+    "text": "msgstr \"Reactive Resume ir atvērtā koda programma ar MIT licenci. To uztur Amruth Pillai un līdzautoru kopiena, bet ziedojumi sedz mitināšanas un izstrādes izmaksas. Maksas plāna nav.\""
+  },
+  {
+    "file": "user/apps/web/locales/ml-IN.po",
+    "line": 2291,
+    "matchedTerm": "Amruth Pillai",
+    "text": "#. Email footer. author: Amruth Pillai, linked"
+  },
+  {
+    "file": "user/apps/web/locales/ml-IN.po",
+    "line": 15559,
+    "matchedTerm": "Amruth Pillai",
+    "text": "msgid \"Reactive Resume is open source under the MIT License. Amruth Pillai and a community of contributors keep it running, and donations pay for hosting and development. There’s no paid tier.\""
+  },
+  {
+    "file": "user/apps/web/locales/ml-IN.po",
+    "line": 15560,
+    "matchedTerm": "Amruth Pillai",
+    "text": "msgstr \"Reactive Resume MIT ലൈസൻസിന് കീഴിലുള്ള ഓപ്പൺ സോഴ്‌സാണ്. Amruth Pillai-യും ഒരു കൂട്ടം സംഭാവകരുമാണ് ഇത് നടത്തിക്കൊണ്ടുപോകുന്നത്, ഹോസ്റ്റിംഗിനും വികസനത്തിനുമുള്ള ചെലവ് സംഭാവനകളിലൂടെയാണ്. പണമടച്ചുള്ള പ്ലാൻ ഇല്ല.\""
+  },
+  {
+    "file": "user/apps/web/locales/mr-IN.po",
+    "line": 2291,
+    "matchedTerm": "Amruth Pillai",
+    "text": "#. Email footer. author: Amruth Pillai, linked"
+  },
+  {
+    "file": "user/apps/web/locales/mr-IN.po",
+    "line": 15559,
+    "matchedTerm": "Amruth Pillai",
+    "text": "msgid \"Reactive Resume is open source under the MIT License. Amruth Pillai and a community of contributors keep it running, and donations pay for hosting and development. There’s no paid tier.\""
+  },
+  {
+    "file": "user/apps/web/locales/mr-IN.po",
+    "line": 15560,
+    "matchedTerm": "Amruth Pillai",
+    "text": "msgstr \"Reactive Resume हे MIT License अंतर्गत ओपन सोर्स आहे. Amruth Pillai आणि योगदानकर्त्यांचा समुदाय ते चालवतात, आणि देणग्यांमधून होस्टिंग व विकासाचा खर्च भागतो. कोणताही सशुल्क प्लॅन नाही.\""
+  },
+  {
+    "file": "user/apps/web/locales/ms-MY.po",
+    "line": 2291,
+    "matchedTerm": "Amruth Pillai",
+    "text": "#. Email footer. author: Amruth Pillai, linked"
+  },
+  {
+    "file": "user/apps/web/locales/ms-MY.po",
+    "line": 15559,
+    "matchedTerm": "Amruth Pillai",
+    "text": "msgid \"Reactive Resume is open source under the MIT License. Amruth Pillai and a community of contributors keep it running, and donations pay for hosting and development. There’s no paid tier.\""
+  },
+  {
+    "file": "user/apps/web/locales/ms-MY.po",
+    "line": 15560,
+    "matchedTerm": "Amruth Pillai",
+    "text": "msgstr \"Reactive Resume ialah sumber terbuka di bawah Lesen MIT. Amruth Pillai dan komuniti penyumbang memastikannya terus berjalan, dan derma membiayai pengehosan dan pembangunan. Tiada peringkat berbayar.\""
+  },
+  {
+    "file": "user/apps/web/locales/ne-NP.po",
+    "line": 2291,
+    "matchedTerm": "Amruth Pillai",
+    "text": "#. Email footer. author: Amruth Pillai, linked"
+  },
+  {
+    "file": "user/apps/web/locales/ne-NP.po",
+    "line": 15559,
+    "matchedTerm": "Amruth Pillai",
+    "text": "msgid \"Reactive Resume is open source under the MIT License. Amruth Pillai and a community of contributors keep it running, and donations pay for hosting and development. There’s no paid tier.\""
+  },
+  {
+    "file": "user/apps/web/locales/ne-NP.po",
+    "line": 15560,
+    "matchedTerm": "Amruth Pillai",
+    "text": "msgstr \"Reactive Resume MIT License अन्तर्गत खुला स्रोत हो। Amruth Pillai र योगदानकर्ताहरूको समुदायले यसलाई चलाइराखेका छन्, र दानले होस्टिङ र विकासको खर्च धान्छ। कुनै सशुल्क तह छैन।\""
+  },
+  {
+    "file": "user/apps/web/locales/nl-NL.po",
+    "line": 2291,
+    "matchedTerm": "Amruth Pillai",
+    "text": "#. Email footer. author: Amruth Pillai, linked"
+  },
+  {
+    "file": "user/apps/web/locales/nl-NL.po",
+    "line": 15559,
+    "matchedTerm": "Amruth Pillai",
+    "text": "msgid \"Reactive Resume is open source under the MIT License. Amruth Pillai and a community of contributors keep it running, and donations pay for hosting and development. There’s no paid tier.\""
+  },
+  {
+    "file": "user/apps/web/locales/nl-NL.po",
+    "line": 15560,
+    "matchedTerm": "Amruth Pillai",
+    "text": "msgstr \"Reactive Resume is open source onder de MIT-licentie. Amruth Pillai en een community van bijdragers houden het draaiende, en donaties betalen hosting en ontwikkeling. Er is geen betaalde versie.\""
+  },
+  {
+    "file": "user/apps/web/locales/no-NO.po",
+    "line": 2291,
+    "matchedTerm": "Amruth Pillai",
+    "text": "#. Email footer. author: Amruth Pillai, linked"
+  },
+  {
+    "file": "user/apps/web/locales/no-NO.po",
+    "line": 15559,
+    "matchedTerm": "Amruth Pillai",
+    "text": "msgid \"Reactive Resume is open source under the MIT License. Amruth Pillai and a community of contributors keep it running, and donations pay for hosting and development. There’s no paid tier.\""
+  },
+  {
+    "file": "user/apps/web/locales/no-NO.po",
+    "line": 15560,
+    "matchedTerm": "Amruth Pillai",
+    "text": "msgstr \"Reactive Resume er åpen kildekode under MIT-lisensen. Amruth Pillai og et fellesskap av bidragsytere holder det i gang, og donasjoner betaler for drift og utvikling. Det finnes ingen betalt versjon.\""
+  },
+  {
+    "file": "user/apps/web/locales/or-IN.po",
+    "line": 2291,
+    "matchedTerm": "Amruth Pillai",
+    "text": "#. Email footer. author: Amruth Pillai, linked"
+  },
+  {
+    "file": "user/apps/web/locales/or-IN.po",
+    "line": 15561,
+    "matchedTerm": "Amruth Pillai",
+    "text": "msgid \"Reactive Resume is open source under the MIT License. Amruth Pillai and a community of contributors keep it running, and donations pay for hosting and development. There’s no paid tier.\""
+  },
+  {
+    "file": "user/apps/web/locales/or-IN.po",
+    "line": 15562,
+    "matchedTerm": "Amruth Pillai",
+    "text": "msgstr \"Reactive Resume MIT ଲାଇସେନ୍ସ ଅଧୀନରେ ଓପନ୍ ସୋର୍ସ। Amruth Pillai ଓ ଅବଦାନକାରୀଙ୍କ ଏକ ସମୁଦାୟ ଏହାକୁ ଚଳାନ୍ତି, ଏବଂ ଦାନରୁ ହୋଷ୍ଟିଂ ଓ ବିକାଶର ଖର୍ଚ୍ଚ ବହନ ହୁଏ। କୌଣସି ପେଡ୍ ସ୍ତର ନାହିଁ।\""
+  },
+  {
+    "file": "user/apps/web/locales/pl-PL.po",
+    "line": 2291,
+    "matchedTerm": "Amruth Pillai",
+    "text": "#. Email footer. author: Amruth Pillai, linked"
+  },
+  {
+    "file": "user/apps/web/locales/pl-PL.po",
+    "line": 15559,
+    "matchedTerm": "Amruth Pillai",
+    "text": "msgid \"Reactive Resume is open source under the MIT License. Amruth Pillai and a community of contributors keep it running, and donations pay for hosting and development. There’s no paid tier.\""
+  },
+  {
+    "file": "user/apps/web/locales/pl-PL.po",
+    "line": 15560,
+    "matchedTerm": "Amruth Pillai",
+    "text": "msgstr \"Reactive Resume jest open source na licencji MIT. Utrzymują go Amruth Pillai i społeczność współtwórców, a darowizny pokrywają hosting i rozwój. Nie ma płatnego planu.\""
+  },
+  {
+    "file": "user/apps/web/locales/pt-BR.po",
+    "line": 2291,
+    "matchedTerm": "Amruth Pillai",
+    "text": "#. Email footer. author: Amruth Pillai, linked"
+  },
+  {
+    "file": "user/apps/web/locales/pt-BR.po",
+    "line": 15559,
+    "matchedTerm": "Amruth Pillai",
+    "text": "msgid \"Reactive Resume is open source under the MIT License. Amruth Pillai and a community of contributors keep it running, and donations pay for hosting and development. There’s no paid tier.\""
+  },
+  {
+    "file": "user/apps/web/locales/pt-BR.po",
+    "line": 15560,
+    "matchedTerm": "Amruth Pillai",
+    "text": "msgstr \"O Reactive Resume é de código aberto sob a Licença MIT. Amruth Pillai e uma comunidade de colaboradores o mantêm funcionando, e as doações pagam a hospedagem e o desenvolvimento. Não há plano pago.\""
+  },
+  {
+    "file": "user/apps/web/locales/pt-PT.po",
+    "line": 2291,
+    "matchedTerm": "Amruth Pillai",
+    "text": "#. Email footer. author: Amruth Pillai, linked"
+  },
+  {
+    "file": "user/apps/web/locales/pt-PT.po",
+    "line": 15559,
+    "matchedTerm": "Amruth Pillai",
+    "text": "msgid \"Reactive Resume is open source under the MIT License. Amruth Pillai and a community of contributors keep it running, and donations pay for hosting and development. There’s no paid tier.\""
+  },
+  {
+    "file": "user/apps/web/locales/pt-PT.po",
+    "line": 15560,
+    "matchedTerm": "Amruth Pillai",
+    "text": "msgstr \"O Reactive Resume é de código aberto sob a Licença MIT. Amruth Pillai e uma comunidade de colaboradores mantêm-no a funcionar, e os donativos pagam o alojamento e o desenvolvimento. Não há nenhum plano pago.\""
+  },
+  {
+    "file": "user/apps/web/locales/ro-RO.po",
+    "line": 2291,
+    "matchedTerm": "Amruth Pillai",
+    "text": "#. Email footer. author: Amruth Pillai, linked"
+  },
+  {
+    "file": "user/apps/web/locales/ro-RO.po",
+    "line": 15559,
+    "matchedTerm": "Amruth Pillai",
+    "text": "msgid \"Reactive Resume is open source under the MIT License. Amruth Pillai and a community of contributors keep it running, and donations pay for hosting and development. There’s no paid tier.\""
+  },
+  {
+    "file": "user/apps/web/locales/ro-RO.po",
+    "line": 15560,
+    "matchedTerm": "Amruth Pillai",
+    "text": "msgstr \"Reactive Resume este open source sub licența MIT. Amruth Pillai și o comunitate de contributori îl mențin în funcțiune, iar donațiile acoperă găzduirea și dezvoltarea. Nu există niciun plan plătit.\""
+  },
+  {
+    "file": "user/apps/web/locales/ru-RU.po",
+    "line": 2291,
+    "matchedTerm": "Amruth Pillai",
+    "text": "#. Email footer. author: Amruth Pillai, linked"
+  },
+  {
+    "file": "user/apps/web/locales/ru-RU.po",
+    "line": 15559,
+    "matchedTerm": "Amruth Pillai",
+    "text": "msgid \"Reactive Resume is open source under the MIT License. Amruth Pillai and a community of contributors keep it running, and donations pay for hosting and development. There’s no paid tier.\""
+  },
+  {
+    "file": "user/apps/web/locales/ru-RU.po",
+    "line": 15560,
+    "matchedTerm": "Amruth Pillai",
+    "text": "msgstr \"Reactive Resume — проект с открытым исходным кодом под лицензией MIT. Его поддерживают Amruth Pillai и сообщество участников, а пожертвования оплачивают хостинг и разработку. Платного тарифа нет.\""
+  },
+  {
+    "file": "user/apps/web/locales/sk-SK.po",
+    "line": 2291,
+    "matchedTerm": "Amruth Pillai",
+    "text": "#. Email footer. author: Amruth Pillai, linked"
+  },
+  {
+    "file": "user/apps/web/locales/sk-SK.po",
+    "line": 15559,
+    "matchedTerm": "Amruth Pillai",
+    "text": "msgid \"Reactive Resume is open source under the MIT License. Amruth Pillai and a community of contributors keep it running, and donations pay for hosting and development. There’s no paid tier.\""
+  },
+  {
+    "file": "user/apps/web/locales/sk-SK.po",
+    "line": 15560,
+    "matchedTerm": "Amruth Pillai",
+    "text": "msgstr \"Reactive Resume je open source pod licenciou MIT. Prevádzkujú ho Amruth Pillai a komunita prispievateľov a dary pokrývajú hosting a vývoj. Neexistuje žiadny platený program.\""
+  },
+  {
+    "file": "user/apps/web/locales/sl-SI.po",
+    "line": 2291,
+    "matchedTerm": "Amruth Pillai",
+    "text": "#. Email footer. author: Amruth Pillai, linked"
+  },
+  {
+    "file": "user/apps/web/locales/sl-SI.po",
+    "line": 15559,
+    "matchedTerm": "Amruth Pillai",
+    "text": "msgid \"Reactive Resume is open source under the MIT License. Amruth Pillai and a community of contributors keep it running, and donations pay for hosting and development. There’s no paid tier.\""
+  },
+  {
+    "file": "user/apps/web/locales/sl-SI.po",
+    "line": 15560,
+    "matchedTerm": "Amruth Pillai",
+    "text": "msgstr \"Reactive Resume je odprtokoden pod licenco MIT. Amruth Pillai in skupnost sodelavcev skrbijo za njegovo delovanje, donacije pa krijejo gostovanje in razvoj. Plačljive različice ni.\""
+  },
+  {
+    "file": "user/apps/web/locales/sq-AL.po",
+    "line": 2291,
+    "matchedTerm": "Amruth Pillai",
+    "text": "#. Email footer. author: Amruth Pillai, linked"
+  },
+  {
+    "file": "user/apps/web/locales/sq-AL.po",
+    "line": 15559,
+    "matchedTerm": "Amruth Pillai",
+    "text": "msgid \"Reactive Resume is open source under the MIT License. Amruth Pillai and a community of contributors keep it running, and donations pay for hosting and development. There’s no paid tier.\""
+  },
+  {
+    "file": "user/apps/web/locales/sq-AL.po",
+    "line": 15560,
+    "matchedTerm": "Amruth Pillai",
+    "text": "msgstr \"Reactive Resume është me burim të hapur sipas licencës MIT. Amruth Pillai dhe një komunitet kontribuuesish e mbajnë në punë, dhe donacionet paguajnë hostimin dhe zhvillimin. Nuk ka nivel me pagesë.\""
+  },
+  {
+    "file": "user/apps/web/locales/sr-SP.po",
+    "line": 2291,
+    "matchedTerm": "Amruth Pillai",
+    "text": "#. Email footer. author: Amruth Pillai, linked"
+  },
+  {
+    "file": "user/apps/web/locales/sr-SP.po",
+    "line": 15559,
+    "matchedTerm": "Amruth Pillai",
+    "text": "msgid \"Reactive Resume is open source under the MIT License. Amruth Pillai and a community of contributors keep it running, and donations pay for hosting and development. There’s no paid tier.\""
+  },
+  {
+    "file": "user/apps/web/locales/sr-SP.po",
+    "line": 15560,
+    "matchedTerm": "Amruth Pillai",
+    "text": "msgstr \"Reactive Resume је отвореног кода под MIT лиценцом. Amruth Pillai и заједница сарадника га одржавају, а донације покривају хостинг и развој. Не постоји плаћени ниво.\""
+  },
+  {
+    "file": "user/apps/web/locales/sv-SE.po",
+    "line": 2291,
+    "matchedTerm": "Amruth Pillai",
+    "text": "#. Email footer. author: Amruth Pillai, linked"
+  },
+  {
+    "file": "user/apps/web/locales/sv-SE.po",
+    "line": 15559,
+    "matchedTerm": "Amruth Pillai",
+    "text": "msgid \"Reactive Resume is open source under the MIT License. Amruth Pillai and a community of contributors keep it running, and donations pay for hosting and development. There’s no paid tier.\""
+  },
+  {
+    "file": "user/apps/web/locales/sv-SE.po",
+    "line": 15560,
+    "matchedTerm": "Amruth Pillai",
+    "text": "msgstr \"Reactive Resume är öppen källkod under MIT-licensen. Amruth Pillai och en gemenskap av bidragsgivare håller det igång, och donationer betalar för drift och utveckling. Det finns ingen betalnivå.\""
+  },
+  {
+    "file": "user/apps/web/locales/ta-IN.po",
+    "line": 2291,
+    "matchedTerm": "Amruth Pillai",
+    "text": "#. Email footer. author: Amruth Pillai, linked"
+  },
+  {
+    "file": "user/apps/web/locales/ta-IN.po",
+    "line": 15559,
+    "matchedTerm": "Amruth Pillai",
+    "text": "msgid \"Reactive Resume is open source under the MIT License. Amruth Pillai and a community of contributors keep it running, and donations pay for hosting and development. There’s no paid tier.\""
+  },
+  {
+    "file": "user/apps/web/locales/ta-IN.po",
+    "line": 15560,
+    "matchedTerm": "Amruth Pillai",
+    "text": "msgstr \"Reactive Resume, MIT உரிமத்தின் கீழ் திறந்த மூலமாக உள்ளது. Amruth Pillai-யும் பங்களிப்பாளர்களின் சமூகமும் இதை இயக்குகின்றனர்; ஹோஸ்டிங் மற்றும் மேம்பாட்டுச் செலவுகளை நன்கொடைகள் ஈடுகட்டுகின்றன. கட்டணத் திட்டம் எதுவும் இல்லை.\""
+  },
+  {
+    "file": "user/apps/web/locales/te-IN.po",
+    "line": 2291,
+    "matchedTerm": "Amruth Pillai",
+    "text": "#. Email footer. author: Amruth Pillai, linked"
+  },
+  {
+    "file": "user/apps/web/locales/te-IN.po",
+    "line": 15559,
+    "matchedTerm": "Amruth Pillai",
+    "text": "msgid \"Reactive Resume is open source under the MIT License. Amruth Pillai and a community of contributors keep it running, and donations pay for hosting and development. There’s no paid tier.\""
+  },
+  {
+    "file": "user/apps/web/locales/te-IN.po",
+    "line": 15560,
+    "matchedTerm": "Amruth Pillai",
+    "text": "msgstr \"Reactive Resume MIT లైసెన్స్ కింద ఓపెన్ సోర్స్. Amruth Pillai, సహకారుల సమూహం దీన్ని నడుపుతున్నారు, హోస్టింగ్ మరియు డెవలప్‌మెంట్ ఖర్చులను విరాళాలు భరిస్తాయి. చెల్లింపు ప్లాన్ ఏదీ లేదు.\""
+  },
+  {
+    "file": "user/apps/web/locales/th-TH.po",
+    "line": 2291,
+    "matchedTerm": "Amruth Pillai",
+    "text": "#. Email footer. author: Amruth Pillai, linked"
+  },
+  {
+    "file": "user/apps/web/locales/th-TH.po",
+    "line": 15559,
+    "matchedTerm": "Amruth Pillai",
+    "text": "msgid \"Reactive Resume is open source under the MIT License. Amruth Pillai and a community of contributors keep it running, and donations pay for hosting and development. There’s no paid tier.\""
+  },
+  {
+    "file": "user/apps/web/locales/th-TH.po",
+    "line": 15560,
+    "matchedTerm": "Amruth Pillai",
+    "text": "msgstr \"Reactive Resume เป็นโอเพนซอร์สภายใต้สัญญาอนุญาต MIT โดย Amruth Pillai และชุมชนผู้ร่วมพัฒนาช่วยกันดูแล ส่วนเงินบริจาคใช้จ่ายค่าโฮสติ้งและการพัฒนา ไม่มีแพ็กเกจแบบเสียเงิน\""
+  },
+  {
+    "file": "user/apps/web/locales/tr-TR.po",
+    "line": 2291,
+    "matchedTerm": "Amruth Pillai",
+    "text": "#. Email footer. author: Amruth Pillai, linked"
+  },
+  {
+    "file": "user/apps/web/locales/tr-TR.po",
+    "line": 15559,
+    "matchedTerm": "Amruth Pillai",
+    "text": "msgid \"Reactive Resume is open source under the MIT License. Amruth Pillai and a community of contributors keep it running, and donations pay for hosting and development. There’s no paid tier.\""
+  },
+  {
+    "file": "user/apps/web/locales/tr-TR.po",
+    "line": 15560,
+    "matchedTerm": "Amruth Pillai",
+    "text": "msgstr \"Reactive Resume, MIT Lisansı altında açık kaynaklıdır. Amruth Pillai ve bir katkıda bulunanlar topluluğu onu ayakta tutuyor; barındırma ve geliştirme masraflarını bağışlar karşılıyor. Ücretli bir paket yok.\""
+  },
+  {
+    "file": "user/apps/web/locales/uk-UA.po",
+    "line": 2291,
+    "matchedTerm": "Amruth Pillai",
+    "text": "#. Email footer. author: Amruth Pillai, linked"
+  },
+  {
+    "file": "user/apps/web/locales/uk-UA.po",
+    "line": 15559,
+    "matchedTerm": "Amruth Pillai",
+    "text": "msgid \"Reactive Resume is open source under the MIT License. Amruth Pillai and a community of contributors keep it running, and donations pay for hosting and development. There’s no paid tier.\""
+  },
+  {
+    "file": "user/apps/web/locales/uk-UA.po",
+    "line": 15560,
+    "matchedTerm": "Amruth Pillai",
+    "text": "msgstr \"Reactive Resume — проєкт з відкритим кодом під ліцензією MIT. Його підтримують Amruth Pillai та спільнота контриб’юторів, а пожертви оплачують хостинг і розробку. Платного тарифу немає.\""
+  },
+  {
+    "file": "user/apps/web/locales/uz-UZ.po",
+    "line": 2291,
+    "matchedTerm": "Amruth Pillai",
+    "text": "#. Email footer. author: Amruth Pillai, linked"
+  },
+  {
+    "file": "user/apps/web/locales/uz-UZ.po",
+    "line": 15559,
+    "matchedTerm": "Amruth Pillai",
+    "text": "msgid \"Reactive Resume is open source under the MIT License. Amruth Pillai and a community of contributors keep it running, and donations pay for hosting and development. There’s no paid tier.\""
+  },
+  {
+    "file": "user/apps/web/locales/uz-UZ.po",
+    "line": 15560,
+    "matchedTerm": "Amruth Pillai",
+    "text": "msgstr \"Reactive Resume MIT litsenziyasi ostidagi ochiq kodli loyiha. Amruth Pillai va hissa qo'shuvchilar hamjamiyati uni qo'llab-quvvatlaydi, xayriyalar esa xosting va ishlab chiqish xarajatlarini qoplaydi. Pullik tarif yo'q.\""
+  },
+  {
+    "file": "user/apps/web/locales/vi-VN.po",
+    "line": 2291,
+    "matchedTerm": "Amruth Pillai",
+    "text": "#. Email footer. author: Amruth Pillai, linked"
+  },
+  {
+    "file": "user/apps/web/locales/vi-VN.po",
+    "line": 15559,
+    "matchedTerm": "Amruth Pillai",
+    "text": "msgid \"Reactive Resume is open source under the MIT License. Amruth Pillai and a community of contributors keep it running, and donations pay for hosting and development. There’s no paid tier.\""
+  },
+  {
+    "file": "user/apps/web/locales/vi-VN.po",
+    "line": 15560,
+    "matchedTerm": "Amruth Pillai",
+    "text": "msgstr \"Reactive Resume là mã nguồn mở theo Giấy phép MIT. Amruth Pillai và cộng đồng người đóng góp duy trì dự án, còn tiền quyên góp chi trả cho lưu trữ và phát triển. Không có gói trả phí.\""
+  },
+  {
+    "file": "user/apps/web/locales/zh-CN.po",
+    "line": 2291,
+    "matchedTerm": "Amruth Pillai",
+    "text": "#. Email footer. author: Amruth Pillai, linked"
+  },
+  {
+    "file": "user/apps/web/locales/zh-CN.po",
+    "line": 15559,
+    "matchedTerm": "Amruth Pillai",
+    "text": "msgid \"Reactive Resume is open source under the MIT License. Amruth Pillai and a community of contributors keep it running, and donations pay for hosting and development. There’s no paid tier.\""
+  },
+  {
+    "file": "user/apps/web/locales/zh-CN.po",
+    "line": 15560,
+    "matchedTerm": "Amruth Pillai",
+    "text": "msgstr \"Reactive Resume 基于 MIT 许可证开源。Amruth Pillai 和贡献者社区维护着它的运转，捐赠用于支付托管和开发费用。没有付费版本。\""
+  },
+  {
+    "file": "user/apps/web/locales/zh-TW.po",
+    "line": 2291,
+    "matchedTerm": "Amruth Pillai",
+    "text": "#. Email footer. author: Amruth Pillai, linked"
+  },
+  {
+    "file": "user/apps/web/locales/zh-TW.po",
+    "line": 15559,
+    "matchedTerm": "Amruth Pillai",
+    "text": "msgid \"Reactive Resume is open source under the MIT License. Amruth Pillai and a community of contributors keep it running, and donations pay for hosting and development. There’s no paid tier.\""
+  },
+  {
+    "file": "user/apps/web/locales/zh-TW.po",
+    "line": 15560,
+    "matchedTerm": "Amruth Pillai",
+    "text": "msgstr \"Reactive Resume 以 MIT 授權開源。Amruth Pillai 和貢獻者社群維持它的運作，捐款用於支付託管和開發費用。沒有付費方案。\""
+  },
+  {
+    "file": "user/apps/web/locales/zu-ZA.po",
+    "line": 2291,
+    "matchedTerm": "Amruth Pillai",
+    "text": "#. Email footer. author: Amruth Pillai, linked"
+  },
+  {
+    "file": "user/apps/web/locales/zu-ZA.po",
+    "line": 15556,
+    "matchedTerm": "Amruth Pillai",
+    "text": "msgid \"Reactive Resume is open source under the MIT License. Amruth Pillai and a community of contributors keep it running, and donations pay for hosting and development. There’s no paid tier.\""
+  },
+  {
+    "file": "user/apps/web/src/features/auth/email-text.ts",
+    "line": 53,
+    "matchedTerm": "Amruth Pillai",
+    "text": "msg({ message: \"A passion project by {author}.\", comment: \"Email footer. author: Amruth Pillai, linked\" });"
+  },
+  {
+    "file": "user/apps/web/src/features/homepage/sections.tsx",
+    "line": 321,
+    "matchedTerm": "Amruth Pillai",
+    "text": "{t`AI Resume Agent provides intelligent, precision career and resume management tools with complete privacy and data ownership. Built upon open standards under the MIT License, preserving attribution to Amruth Pillai and open-source contributors.`}"
+  },
+  {
+    "file": "user/apps/web/src/features/legal/privacy-page.tsx",
+    "line": 31,
+    "matchedTerm": "Amruth Pillai",
+    "text": "software originally developed as Reactive Resume by Amruth Pillai, licensed under the MIT License. All original copyright"
+  },
+  {
+    "file": "user/cloudron/CloudronManifest.json",
+    "line": 30,
+    "matchedTerm": "Amruth Pillai",
+    "text": "\"packagerName\": \"Amruth Pillai\","
+  },
+  {
+    "file": "user/cloudron/CloudronVersions.json",
+    "line": 34,
+    "matchedTerm": "Amruth Pillai",
+    "text": "\"packagerName\": \"Amruth Pillai\","
+  },
+  {
+    "file": "user/cloudron/CloudronVersions.json",
+    "line": 79,
+    "matchedTerm": "Amruth Pillai",
+    "text": "\"packagerName\": \"Amruth Pillai\","
+  },
+  {
+    "file": "user/cloudron/CloudronVersions.json",
+    "line": 124,
+    "matchedTerm": "Amruth Pillai",
+    "text": "\"packagerName\": \"Amruth Pillai\","
+  },
+  {
+    "file": "user/cloudron/CloudronVersions.json",
+    "line": 169,
+    "matchedTerm": "Amruth Pillai",
+    "text": "\"packagerName\": \"Amruth Pillai\","
+  },
+  {
+    "file": "user/cloudron/CloudronVersions.json",
+    "line": 214,
+    "matchedTerm": "Amruth Pillai",
+    "text": "\"packagerName\": \"Amruth Pillai\","
+  },
+  {
+    "file": "user/cloudron/CloudronVersions.json",
+    "line": 259,
+    "matchedTerm": "Amruth Pillai",
+    "text": "\"packagerName\": \"Amruth Pillai\","
+  },
+  {
+    "file": "user/cloudron/CloudronVersions.json",
+    "line": 304,
+    "matchedTerm": "Amruth Pillai",
+    "text": "\"packagerName\": \"Amruth Pillai\","
+  },
+  {
+    "file": "user/Dockerfile",
+    "line": 65,
+    "matchedTerm": "Amruth Pillai",
+    "text": "LABEL org.opencontainers.image.vendor=\"Amruth Pillai\""
+  },
+  {
+    "file": "user/docs/changelog/index.mdx",
+    "line": 434,
+    "matchedTerm": "amruth@rxresu.me",
+    "text": "- Changed the project contact address to amruth@rxresu.me across the website, API reference, legal pages and security policy. [#3604](https://github.com/reactive-resume/reactive-resume/pull/3604)"
+  },
+  {
+    "file": "user/docs/changelog/index.mdx",
+    "line": 2210,
+    "matchedTerm": "amruth@rxresu.me",
+    "text": "That list is not exhaustive. Send feedback via [email](mailto:amruth@rxresu.me) or [GitHub issues](https://github.com/reactive-resume/reactive-resume/issues)."
+  },
+  {
+    "file": "user/docs/community/sponsors.mdx",
+    "line": 12,
+    "matchedTerm": "amruth@rxresu.me",
+    "text": "If your company would like to sponsor Reactive Resume, email [amruth@rxresu.me](mailto:amruth@rxresu.me)."
+  },
+  {
+    "file": "user/docs/community/spotlight.mdx",
+    "line": 8,
+    "matchedTerm": "amruth@rxresu.me",
+    "text": "here. Email me at [amruth@rxresu.me](mailto:amruth@rxresu.me) and I'll add it to this page."
+  },
+  {
+    "file": "user/docs/legal/license.mdx",
+    "line": 20,
+    "matchedTerm": "Amruth Pillai",
+    "text": "Copyright (c) 2026 Amruth Pillai"
+  },
+  {
+    "file": "user/docs/legal/privacy-policy.mdx",
+    "line": 12,
+    "matchedTerm": "Amruth Pillai",
+    "text": "- **Service Operator**: Amruth Pillai"
+  },
+  {
+    "file": "user/docs/legal/privacy-policy.mdx",
+    "line": 13,
+    "matchedTerm": "amruth@rxresu.me",
+    "text": "- **Contact**: amruth@rxresu.me"
+  },
+  {
+    "file": "user/docs/legal/privacy-policy.mdx",
+    "line": 22,
+    "matchedTerm": "amruth@rxresu.me",
+    "text": "project's published support contact is <code>amruth@rxresu.me</code>. Replace the placeholders above with the correct"
+  },
+  {
+    "file": "user/docs/legal/privacy-policy.mdx",
+    "line": 255,
+    "matchedTerm": "Amruth Pillai",
+    "text": "- **Service Operator**: Amruth Pillai"
+  },
+  {
+    "file": "user/docs/legal/privacy-policy.mdx",
+    "line": 256,
+    "matchedTerm": "amruth@rxresu.me",
+    "text": "- **Email**: amruth@rxresu.me"
+  },
+  {
+    "file": "user/docs/legal/terms-of-service.mdx",
+    "line": 10,
+    "matchedTerm": "Amruth Pillai",
+    "text": "- **Service Operator**: Amruth Pillai"
+  },
+  {
+    "file": "user/docs/legal/terms-of-service.mdx",
+    "line": 11,
+    "matchedTerm": "amruth@rxresu.me",
+    "text": "- **Contact**: amruth@rxresu.me"
+  },
+  {
+    "file": "user/docs/legal/terms-of-service.mdx",
+    "line": 19,
+    "matchedTerm": "amruth@rxresu.me",
+    "text": "hosted service at <code>rxresu.me</code>, the project's published support contact is <code>amruth@rxresu.me</code>."
+  },
+  {
+    "file": "user/docs/legal/terms-of-service.mdx",
+    "line": 190,
+    "matchedTerm": "Amruth Pillai",
+    "text": "- **Service Operator**: Amruth Pillai"
+  },
+  {
+    "file": "user/docs/legal/terms-of-service.mdx",
+    "line": 191,
+    "matchedTerm": "amruth@rxresu.me",
+    "text": "- **Email**: amruth@rxresu.me"
+  },
+  {
+    "file": "user/docs/spec.json",
+    "line": 11,
+    "matchedTerm": "Amruth Pillai",
+    "text": "\"name\": \"Amruth Pillai\","
+  },
+  {
+    "file": "user/docs/spec.json",
+    "line": 12,
+    "matchedTerm": "amruth@rxresu.me",
+    "text": "\"email\": \"amruth@rxresu.me\","
+  },
+  {
+    "file": "user/docs/spec.json",
+    "line": 13,
+    "matchedTerm": "amruthpillai.com",
+    "text": "\"url\": \"https://amruthpillai.com\""
+  },
+  {
+    "file": "user/GLOSSARY.md",
+    "line": 28,
+    "matchedTerm": "Amruth Pillai",
+    "text": "Names in sample documents and job postings are proper nouns too: Alex Morgan, Amruth Pillai,"
+  },
+  {
+    "file": "user/LICENSE",
+    "line": 3,
+    "matchedTerm": "Amruth Pillai",
+    "text": "Copyright (c) 2026 Amruth Pillai"
+  },
+  {
+    "file": "user/package.json",
+    "line": 8,
+    "matchedTerm": "Amruth Pillai",
+    "text": "\"name\": \"Amruth Pillai\","
+  },
+  {
+    "file": "user/package.json",
+    "line": 9,
+    "matchedTerm": "amruth@rxresu.me",
+    "text": "\"email\": \"amruth@rxresu.me\","
+  },
+  {
+    "file": "user/package.json",
+    "line": 10,
+    "matchedTerm": "amruthpillai.com",
+    "text": "\"url\": \"https://amruthpillai.com\""
+  },
+  {
+    "file": "user/packages/api/src/features/custom-domain/suggestion.test.ts",
+    "line": 32,
+    "matchedTerm": "Amruth Pillai",
+    "text": "state.user = { username: \"amruth\", name: \"Amruth Pillai\" };"
+  },
+  {
+    "file": "user/packages/api/src/features/custom-domain/suggestion.test.ts",
+    "line": 34,
+    "matchedTerm": "amruth",
+    "text": "\"amruth.cv\": { available: true, premium: true, registration_fee: 67.5, renewal_fee: 10, currency: \"USD\" },"
+  },
+  {
+    "file": "user/packages/api/src/features/custom-domain/suggestion.test.ts",
+    "line": 36,
+    "matchedTerm": "amruth",
+    "text": "\"amruth-pillai.cv\": { available: true, premium: false, registration_fee: 10, renewal_fee: 10, currency: \"USD\" },"
+  },
+  {
+    "file": "user/packages/api/src/features/custom-domain/suggestion.test.ts",
+    "line": 39,
+    "matchedTerm": "amruth",
+    "text": "domain: \"amruth-pillai.cv\","
+  },
+  {
+    "file": "user/packages/dsh-plugin/docs/plans/2026-08-16-implementation.md",
+    "line": 1084,
+    "matchedTerm": "Amruth Pillai",
+    "text": "Create `LICENSE` with the standard MIT text, copyright `2026 Amruth Pillai`."
+  },
+  {
+    "file": "user/packages/dsh-plugin/package.json",
+    "line": 13,
+    "matchedTerm": "Amruth Pillai",
+    "text": "\"author\": \"Amruth Pillai\","
+  },
+  {
+    "file": "user/packages/email/src/templates/auth.tsx",
+    "line": 141,
+    "matchedTerm": "amruthpillai.com",
+    "text": "href=\"https://amruthpillai.com\""
+  },
+  {
+    "file": "user/packages/email/src/templates/auth.tsx",
+    "line": 145,
+    "matchedTerm": "Amruth Pillai",
+    "text": "Amruth Pillai"
+  },
+  {
+    "file": "user/plugins/reactive-resume/.claude-plugin/plugin.json",
+    "line": 6,
+    "matchedTerm": "Amruth Pillai",
+    "text": "\"author\": { \"name\": \"Amruth Pillai\", \"email\": \"amruth@rxresu.me\", \"url\": \"https://amruthpillai.com\" },"
+  },
+  {
+    "file": "user/plugins/reactive-resume/plugin.json",
+    "line": 6,
+    "matchedTerm": "Amruth Pillai",
+    "text": "\"author\": { \"name\": \"Amruth Pillai\", \"url\": \"https://amruthpillai.com\" },"
+  },
+  {
+    "file": "user/README.md",
+    "line": 81,
+    "matchedTerm": "Amruth Pillai",
+    "text": "AI Resume Agent candidate application is built upon **Reactive Resume** by Amruth Pillai."
+  },
+  {
+    "file": "user/README.md",
+    "line": 86,
+    "matchedTerm": "Amruth Pillai",
+    "text": "Copyright (c) 2026 Amruth Pillai"
+  },
+  {
+    "file": "user/scripts/audit-report.json",
+    "line": 331,
+    "matchedTerm": "github-amruth",
+    "text": "\"text\": \"--certificate-identity https://github.com/amruthpillai/reactive-resume/.github/workflows/docker-build.yml@refs/heads/main \\\\\""
+  },
+  {
+    "file": "user/scripts/audit-report.json",
+    "line": 337,
+    "matchedTerm": "github-amruth",
+    "text": "\"text\": \"--certificate-identity https://github.com/amruthpillai/reactive-resume/.github/workflows/docker-build.yml@refs/heads/main \\\\\""
+  },
+  {
+    "file": "user/scripts/audit-report.json",
+    "line": 475,
+    "matchedTerm": "Amruth Pillai",
+    "text": "\"text\": \"\\\"owner\\\": { \\\"name\\\": \\\"Amruth Pillai\\\", \\\"email\\\": \\\"amruth@rxresu.me\\\" },\""
+  },
+  {
+    "file": "user/scripts/audit-report.json",
+    "line": 499,
+    "matchedTerm": "amruth@rxresu.me",
+    "text": "\"text\": \"\\\"email\\\": \\\"amruth@rxresu.me\\\",\""
+  },
+  {
+    "file": "user/scripts/audit-report.json",
+    "line": 859,
+    "matchedTerm": "amruth",
+    "text": "\"text\": \"specification is the handoff bundle at `/Users/amruth/Projects/reactive-resume/.agents/handoff/mobile-final`\""
+  },
+  {
+    "file": "user/scripts/audit-report.json",
+    "line": 871,
+    "matchedTerm": "amruth",
+    "text": "\"text\": \"1. Work in `/Users/amruth/Projects/reactive-resume/apps/mobile` on branch `feat/mobile-next`. Never commit, stash,\""
+  },
+  {
+    "file": "user/scripts/audit-report.json",
+    "line": 877,
+    "matchedTerm": "amruth",
+    "text": "\"text\": \"5. Repo rules (`/Users/amruth/Projects/reactive-resume/CLAUDE.md`): no AI attribution, no credentials or personal\""
+  },
+  {
+    "file": "user/scripts/audit-report.json",
+    "line": 889,
+    "matchedTerm": "amruth",
+    "text": "\"text\": \"B=/Users/amruth/Projects/reactive-resume/.agents/handoff/mobile-final\""
+  },
+  {
+    "file": "user/scripts/audit-report.json",
+    "line": 2929,
+    "matchedTerm": "Amruth Pillai",
+    "text": "\"text\": \"contact: { name: \\\"Amruth Pillai\\\", email: \\\"amruth@rxresu.me\\\", url: \\\"https://amruthpillai.com\\\" },\""
+  },
+  {
+    "file": "user/scripts/audit-report.json",
+    "line": 3763,
+    "matchedTerm": "amruth@rxresu.me",
+    "text": "\"text\": \"expect(html).toContain('\\\"contactType\\\":\\\"support\\\",\\\"email\\\":\\\"amruth@rxresu.me\\\"');\""
+  },
+  {
+    "file": "user/scripts/audit-report.json",
+    "line": 3871,
+    "matchedTerm": "amruth@rxresu.me",
+    "text": "\"text\": \"contactPoint: { \\\"@type\\\": \\\"ContactPoint\\\", contactType: \\\"support\\\", email: \\\"amruth@rxresu.me\\\" },\""
+  },
+  {
+    "file": "user/scripts/audit-report.json",
+    "line": 4159,
+    "matchedTerm": "amruth@rxresu.me",
+    "text": "\"text\": \"\\\"email\\\": \\\"amruth@rxresu.me\\\",\""
+  },
+  {
+    "file": "user/scripts/audit-report.json",
+    "line": 10837,
+    "matchedTerm": "amruth@rxresu.me",
+    "text": "\"text\": \"{ label: t`Contact`, href: \\\"mailto:amruth@rxresu.me\\\" },\""
+  },
+  {
+    "file": "user/scripts/audit-report.json",
+    "line": 17917,
+    "matchedTerm": "amruth@rxresu.me",
+    "text": "\"text\": \"\\\"email\\\": \\\"amruth@rxresu.me\\\",\""
+  },
+  {
+    "file": "user/scripts/audit-report.json",
+    "line": 20053,
+    "matchedTerm": "amruth@rxresu.me",
+    "text": "\"text\": \"\\\"email\\\": \\\"amruth@rxresu.me\\\",\""
+  },
+  {
+    "file": "user/scripts/audit-report.json",
+    "line": 31609,
+    "matchedTerm": "Amruth Pillai",
+    "text": "\"text\": \"\\\"author\\\": { \\\"name\\\": \\\"Amruth Pillai\\\", \\\"email\\\": \\\"amruth@rxresu.me\\\", \\\"url\\\": \\\"https://amruthpillai.com\\\" },\""
+  },
+  {
+    "file": "user/scripts/audit-report.json",
+    "line": 33469,
+    "matchedTerm": "amruth@rxresu.me",
+    "text": "\"text\": \"- If that is unavailable, email `amruth@rxresu.me` with the subject\""
+  },
+  {
+    "file": "user/scripts/audit-report.json",
+    "line": 34226,
+    "matchedTerm": "github-amruth",
+    "text": "\"text\": \"--certificate-identity https://github.com/amruthpillai/reactive-resume/.github/workflows/docker-build.yml@refs/heads/main \\\\\""
+  },
+  {
+    "file": "user/scripts/audit-report.json",
+    "line": 34232,
+    "matchedTerm": "github-amruth",
+    "text": "\"text\": \"--certificate-identity https://github.com/amruthpillai/reactive-resume/.github/workflows/docker-build.yml@refs/heads/main \\\\\""
+  },
+  {
+    "file": "user/scripts/audit-report.json",
+    "line": 34384,
+    "matchedTerm": "Amruth Pillai",
+    "text": "\"text\": \"\\\"owner\\\": { \\\"name\\\": \\\"Amruth Pillai\\\", \\\"email\\\": \\\"amruth@rxresu.me\\\" },\""
+  },
+  {
+    "file": "user/scripts/audit-report.json",
+    "line": 34410,
+    "matchedTerm": "amruth@rxresu.me",
+    "text": "\"text\": \"\\\"email\\\": \\\"amruth@rxresu.me\\\",\""
+  },
+  {
+    "file": "user/scripts/audit-report.json",
+    "line": 34810,
+    "matchedTerm": "amruth",
+    "text": "\"text\": \"specification is the handoff bundle at `/Users/amruth/Projects/reactive-resume/.agents/handoff/mobile-final`\""
+  },
+  {
+    "file": "user/scripts/audit-report.json",
+    "line": 34822,
+    "matchedTerm": "amruth",
+    "text": "\"text\": \"1. Work in `/Users/amruth/Projects/reactive-resume/apps/mobile` on branch `feat/mobile-next`. Never commit, stash,\""
+  },
+  {
+    "file": "user/scripts/audit-report.json",
+    "line": 34828,
+    "matchedTerm": "amruth",
+    "text": "\"text\": \"5. Repo rules (`/Users/amruth/Projects/reactive-resume/CLAUDE.md`): no AI attribution, no credentials or personal\""
+  },
+  {
+    "file": "user/scripts/audit-report.json",
+    "line": 34840,
+    "matchedTerm": "amruth",
+    "text": "\"text\": \"B=/Users/amruth/Projects/reactive-resume/.agents/handoff/mobile-final\""
+  },
+  {
+    "file": "user/scripts/audit-report.json",
+    "line": 37120,
+    "matchedTerm": "Amruth Pillai",
+    "text": "\"text\": \"contact: { name: \\\"Amruth Pillai\\\", email: \\\"amruth@rxresu.me\\\", url: \\\"https://amruthpillai.com\\\" },\""
+  },
+  {
+    "file": "user/scripts/audit-report.json",
+    "line": 38010,
+    "matchedTerm": "amruth@rxresu.me",
+    "text": "\"text\": \"expect(html).toContain('\\\"contactType\\\":\\\"support\\\",\\\"email\\\":\\\"amruth@rxresu.me\\\"');\""
+  },
+  {
+    "file": "user/scripts/audit-report.json",
+    "line": 38120,
+    "matchedTerm": "amruth@rxresu.me",
+    "text": "\"text\": \"contactPoint: { \\\"@type\\\": \\\"ContactPoint\\\", contactType: \\\"support\\\", email: \\\"amruth@rxresu.me\\\" },\""
+  },
+  {
+    "file": "user/scripts/audit-report.json",
+    "line": 38436,
+    "matchedTerm": "amruth@rxresu.me",
+    "text": "\"text\": \"\\\"email\\\": \\\"amruth@rxresu.me\\\",\""
+  },
+  {
+    "file": "user/scripts/audit-report.json",
+    "line": 45564,
+    "matchedTerm": "amruth@rxresu.me",
+    "text": "\"text\": \"{ label: t`Contact`, href: \\\"mailto:amruth@rxresu.me\\\" },\""
+  },
+  {
+    "file": "user/scripts/audit-report.json",
+    "line": 53158,
+    "matchedTerm": "amruth@rxresu.me",
+    "text": "\"text\": \"\\\"email\\\": \\\"amruth@rxresu.me\\\",\""
+  },
+  {
+    "file": "user/scripts/audit-report.json",
+    "line": 55298,
+    "matchedTerm": "amruth@rxresu.me",
+    "text": "\"text\": \"\\\"email\\\": \\\"amruth@rxresu.me\\\",\""
+  },
+  {
+    "file": "user/scripts/audit-report.json",
+    "line": 68024,
+    "matchedTerm": "Amruth Pillai",
+    "text": "\"text\": \"\\\"author\\\": { \\\"name\\\": \\\"Amruth Pillai\\\", \\\"email\\\": \\\"amruth@rxresu.me\\\", \\\"url\\\": \\\"https://amruthpillai.com\\\" },\""
+  },
+  {
+    "file": "user/scripts/audit-report.json",
+    "line": 69974,
+    "matchedTerm": "amruth@rxresu.me",
+    "text": "\"text\": \"- If that is unavailable, email `amruth@rxresu.me` with the subject\""
+  },
+  {
+    "file": "user/scripts/categorize-audit.mjs",
+    "line": 15,
+    "matchedTerm": "amruth",
+    "text": "email_upstream: /amruth@rxresu\\.me/i,"
+  },
+  {
+    "file": "user/scripts/categorize-audit.mjs",
+    "line": 70,
+    "matchedTerm": "Amruth Pillai",
+    "text": "t.includes(\"Amruth Pillai\") ||"
+  },
+  {
+    "file": "user/scripts/categorize-audit.mjs",
+    "line": 72,
+    "matchedTerm": "Amruth Pillai",
+    "text": "t.includes(\"Copyright (c) 2026 Amruth Pillai\") ||"
+  },
+  {
+    "file": "user/scripts/deep-scan-legacy.mjs",
+    "line": 29,
+    "matchedTerm": "Amruth Pillai",
+    "text": "{ name: \"Amruth Pillai\", regex: /Amruth\\s+Pillai/i },"
+  },
+  {
+    "file": "user/scripts/deep-scan-legacy.mjs",
+    "line": 30,
+    "matchedTerm": "amruth@rxresu.me",
+    "text": "{ name: \"amruth@rxresu.me\", regex: /amruth@rxresu\\.me/i },"
+  },
+  {
+    "file": "user/scripts/deep-scan-legacy.mjs",
+    "line": 31,
+    "matchedTerm": "amruthpillai.com",
+    "text": "{ name: \"amruthpillai.com\", regex: /amruthpillai\\.com/i },"
+  },
+  {
+    "file": "user/scripts/deep-scan-legacy.mjs",
+    "line": 32,
+    "matchedTerm": "amruth",
+    "text": "{ name: \"amruth\", regex: /\\bamruth\\b/i },"
+  },
+  {
+    "file": "user/scripts/deep-scan-legacy.mjs",
+    "line": 33,
+    "matchedTerm": "amruth",
+    "text": "{ name: \"github-amruth\", regex: /github\\.com\\/AmruthPillai/i },"
+  },
+  {
+    "file": "user/scripts/deep-scan-legacy.mjs",
+    "line": 94,
+    "matchedTerm": "amruth",
+    "text": "console.log(`Total Amruth Matches: ${amruthMatches.length}`);"
+  },
+  {
+    "file": "user/scripts/deep-scan-legacy.mjs",
+    "line": 119,
+    "matchedTerm": "amruth",
+    "text": "console.log(`Unique files with Amruth matches: ${Object.keys(amruthByFile).length}`);"
+  },
+  {
+    "file": "user/scripts/e2e-audit-runner.mjs",
+    "line": 399,
+    "matchedTerm": "Amruth Pillai",
+    "text": "const hasMitDisclosure = content.includes(\"Amruth Pillai\") || content.includes(\"MIT License\");"
+  },
+  {
+    "file": "user/SECURITY.md",
+    "line": 23,
+    "matchedTerm": "Amruth Pillai",
+    "text": "AI Resume Agent includes software originally developed as Reactive Resume by Amruth Pillai, licensed under the MIT License."
+  },
+  {
+    "file": "user/tooling/locales/catalog-diff.test.mjs",
+    "line": 20,
+    "matchedTerm": "amruth",
+    "text": "[\"by <0>Amruth</0>\", \"von Amruth\", \"missing <0>, missing </0>\"],"
+  }
+]

@@ -1,0 +1,16 @@
+<svg width="256" height="256" viewBox="0 0 256 256" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <title>AI Resume Agent</title>
+  <defs>
+    <linearGradient id="favGradient" x1="32" y1="24" x2="224" y2="232" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#2563EB"/>
+      <stop offset="100%" stop-color="#1D4ED8"/>
+    </linearGradient>
+  </defs>
+  <rect x="16" y="16" width="224" height="224" rx="48" fill="#0F172A"/>
+  <path d="M128 44L48 196H88L128 116L168 196H208L128 44Z" fill="#FFFFFF"/>
+  <path d="M128 76L82 164H114L128 136L142 164H174L128 76Z" fill="url(#favGradient)"/>
+  <polygon points="128,102 140,122 128,142 116,122" fill="#38BDF8"/>
+  <rect x="98" y="180" width="60" height="8" rx="4" fill="#FFFFFF"/>
+  <circle cx="84" cy="184" r="4" fill="#60A5FA"/>
+  <circle cx="172" cy="184" r="4" fill="#38BDF8"/>
+</svg>

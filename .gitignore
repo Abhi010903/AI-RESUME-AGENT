@@ -1,3 +1,15 @@
+# Node & monorepo dependencies
+node_modules/
+user/**/node_modules/
+.pnpm-store/
+.turbo/
+user/**/.turbo/
+dist/
+user/**/dist/
+.output/
+.vercel/
+*.tsbuildinfo
+
 # Virtual environments
 .venv/
 venv/
@@ -35,3 +47,4 @@ data/testing/resumes/
 .idea/
 .DS_Store
 Thumbs.db
+temp_extract/

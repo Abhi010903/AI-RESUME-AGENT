@@ -1,0 +1,25 @@
+<svg width="256" height="256" viewBox="0 0 256 256" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <title>AI Resume Agent</title>
+  <defs>
+    <linearGradient id="agentGradientLight" x1="32" y1="24" x2="224" y2="232" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#2563EB"/>
+      <stop offset="100%" stop-color="#1D4ED8"/>
+    </linearGradient>
+    <linearGradient id="accentSparkLight" x1="128" y1="84" x2="188" y2="156" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#38BDF8"/>
+      <stop offset="100%" stop-color="#2563EB"/>
+    </linearGradient>
+  </defs>
+  <!-- Background Shield / Carrier Shape -->
+  <rect x="20" y="20" width="216" height="216" rx="48" fill="#F1F5F9" stroke="#E2E8F0" stroke-width="4"/>
+  <!-- Stylized Geometric "A" and Resume Layer Structure -->
+  <path d="M128 44L48 196H88L128 116L168 196H208L128 44Z" fill="#0F172A"/>
+  <!-- Dynamic Career Chevron / AI Accelerator -->
+  <path d="M128 76L82 164H114L128 136L142 164H174L128 76Z" fill="url(#agentGradientLight)"/>
+  <!-- Central Neural Spark / Diamond Core -->
+  <polygon points="128,102 140,122 128,142 116,122" fill="#38BDF8"/>
+  <!-- Precision Resume Document Lines -->
+  <rect x="98" y="180" width="60" height="8" rx="4" fill="#0F172A"/>
+  <circle cx="84" cy="184" r="4" fill="#2563EB"/>
+  <circle cx="172" cy="184" r="4" fill="#38BDF8"/>
+</svg>

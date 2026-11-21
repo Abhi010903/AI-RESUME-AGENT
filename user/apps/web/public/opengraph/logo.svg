@@ -1,0 +1,32 @@
+<svg width="1200" height="630" viewBox="0 0 1200 630" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect width="1200" height="630" fill="#0B0F17"/>
+  <defs>
+    <radialGradient id="ogGlow" cx="600" cy="315" r="500" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#1E3A8A" stop-opacity="0.5"/>
+      <stop offset="100%" stop-color="#0B0F17" stop-opacity="0"/>
+    </radialGradient>
+    <linearGradient id="ogIconGrad" x1="480" y1="120" x2="720" y2="360" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#60A5FA"/>
+      <stop offset="100%" stop-color="#2563EB"/>
+    </linearGradient>
+  </defs>
+  <rect width="1200" height="630" fill="url(#ogGlow)"/>
+  <!-- Central Emblem -->
+  <g transform="translate(480, 100)">
+    <rect x="0" y="0" width="240" height="240" rx="56" fill="#1E293B" stroke="#334155" stroke-width="4"/>
+    <path d="M120 36L40 188H80L120 108L160 188H200L120 36Z" fill="#F8FAFC"/>
+    <path d="M120 68L74 156H106L120 128L134 156H166L120 68Z" fill="url(#ogIconGrad)"/>
+    <polygon points="120,94 132,114 120,134 108,114" fill="#38BDF8"/>
+    <rect x="90" y="172" width="60" height="8" rx="4" fill="#F8FAFC"/>
+  </g>
+  <!-- Titles -->
+  <text x="600" y="420" text-anchor="middle" font-family="'Figtree', system-ui, sans-serif" font-weight="900" font-size="52" letter-spacing="-0.03em" fill="#F8FAFC">
+    AI RESUME AGENT
+  </text>
+  <text x="600" y="475" text-anchor="middle" font-family="'Figtree', system-ui, sans-serif" font-weight="600" font-size="22" letter-spacing="0.14em" fill="#60A5FA">
+    INTELLIGENT CAREER &amp; RESUME PLATFORM
+  </text>
+  <text x="600" y="525" text-anchor="middle" font-family="'Figtree', system-ui, sans-serif" font-weight="400" font-size="18" fill="#94A3B8">
+    Build, optimize, and elevate your professional narrative with precision typography and ATS compatibility.
+  </text>
+</svg>

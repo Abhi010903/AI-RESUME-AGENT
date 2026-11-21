@@ -1,161 +1,98 @@
-# AI Resume Builder — Resume Intelligence Platform
+# AI Resume Agent — Intelligent Career Platform
 
-> **Origin & Identity**: This project originally started as a hackathon project (`hackathon project`) and is being systematically transformed into a production-oriented, open-source AI Resume Intelligence Platform.
-
----
-
-## 1. Project Overview
-
-**AI Resume Builder** is an intelligent resume analysis, profile consolidation, and evaluation platform designed for two independent application domains:
-
-1. **USER Application** *(In Active Development)*: Enables candidates to upload existing resumes, extract structured information, consolidate verified professional history, detect skill gaps, analyze job descriptions, and generate tailored resumes.
-2. **COMPANY Application** *(Reserved for Future Development)*: Enables recruiters to define job requirements, ingest candidate resumes through secure pipelines, detect prompt injection, evaluate evidence-backed skills, and perform transparent candidate shortlisting.
+> **AI Resume Agent** is an enterprise-grade career and resume intelligence platform designed for precision resume architecture, ATS readability optimization, candidate profile management, and career tracking.
 
 ---
 
-## 2. Repository Structure
+## 1. Target Architecture
 
 ```text
-ai-resume-builder/
-├── user/                          # User application domain
-│   └── backend/                   # Modern FastAPI backend (Phases 1 & 2 complete)
-│       ├── app/
-│       │   ├── api/               # Health probes, resume ingestion, extraction API
-│       │   ├── services/          # Extraction engine, validator, private storage
-│       │   ├── config.py          # Pydantic v2 settings & environment management
-│       │   ├── database.py        # SQLAlchemy 2.0 engine & session lifecycle
-│       │   ├── errors.py          # Consistent error envelope & exception handlers
-│       │   ├── logging.py         # Structured JSON logging & request ID tracking
-│       │   ├── models.py          # SQLAlchemy Document data models
-│       │   ├── schemas.py         # Pydantic request/response schemas
-│       │   └── main.py            # FastAPI factory, security headers, middleware
-│       ├── tests/                 # 42-test automated regression suite
-│       ├── .env.example           # Environment template
-│       ├── .gitignore             # Backend-specific ignore rules
-│       ├── pytest.ini             # Pytest configuration
-│       ├── README.md              # Backend-specific documentation
-│       └── requirements.txt       # Minimal, verified production dependencies
+AI-RESUME-AGENT/
+├── user/                    # AI Resume Agent Candidate Platform (Reactive Resume v6.1.1 engine)
+│   ├── apps/
+│   │   ├── web/             # React 19, Vite+, TanStack Router/Query, Tailwind CSS v4, Lingui
+│   │   ├── server/          # Node.js Hono, oRPC, Better Auth, Drizzle ORM, MCP, PDF export
+│   │   └── mobile/          # Expo 58 / React Native mobile application
+│   ├── packages/            # 17 shared workspace packages (ai, schema, db, ui, pdf, docx, etc.)
+│   ├── tooling/             # Monorepo build, locale, and test automation
+│   ├── compose.dev.yml      # Local dev stack (PostgreSQL, Redis, SeaweedFS S3)
+│   ├── package.json         # Root workspace manifest (pnpm + Turborepo)
+│   └── LICENSE              # Original MIT License notice (Amruth Pillai)
 │
-├── resume_builder/                # Original Hackathon Project (Preserved Archive)
-│   ├── resumes/                   # Django app: forms, models, views, migrations
-│   ├── resume_builder/            # Django project configuration (settings, urls, wsgi)
-│   ├── templates/                 # HTML templates (create, list, update, delete)
-│   ├── manage.py                  # Django administrative script
-│   └── db.sqlite3                 # Historical hackathon demonstration database
+├── company/                 # Reserved for future recruiter platform (Untouched)
+│   └── README.md
 │
-├── company/                       # Company / Recruiter application (Reserved)
-├── .gitignore                     # Repository-wide exclusions (secrets, storage, caches)
-└── README.md                      # Project master documentation
+├── docs/                    # Master platform architecture & development documentation
+│
+└── README.md                # Project master documentation
 ```
 
 ---
 
-## 3. Rebuilt Architecture (Stages 1 through 5)
+## 2. Technology Stack
 
-The rebuilt **User Backend** (`user/backend/`) delivers a modular, production-grade foundation:
-
-- **Stage 1 — Backend Foundation**:
-  - FastAPI application factory with dynamic environment management.
-  - SQLAlchemy 2.0 database abstraction (SQLite locally, forward-compatible with PostgreSQL).
-  - Security hardening: Content Security Policy (CSP), HSTS, X-Content-Type-Options, X-Frame-Options, Referrer-Policy.
-  - Request ID tracing propagated across all requests, responses, and structured logs.
-  - Comprehensive health (`/health`) and readiness (`/ready`) probes.
-
-- **Stage 2 — Resume Ingestion & Extraction**:
-  - Secure multi-document batch uploads (1–10 resumes per operation).
-  - Binary file signature verification (`%PDF-` magic bytes, OpenXML ZIP structure) preventing MIME spoofing.
-  - Zip bomb decompression thresholds (50MB cap) and path traversal sanitization.
-  - PyMuPDF extraction engine with scanned/image-only PDF detection and C-library thread serialization.
-  - python-docx extraction engine preserving document order, section headers, footers, nested tables, and Structured Document Tags (`w:sdt`).
-  - SHA-256 content deduplication avoiding redundant disk storage and extraction overhead.
-  - Transaction rollback cleanup and durably retryable document deletion.
-
-- **Stage 3 — Candidate Profile Intelligence**:
-  - Multi-resume consolidation across 1–10 extracted candidate documents.
-  - Entity deduplication and fusion for work experiences, degrees, skills, and certifications.
-  - Source document traceability preserved for every extracted entity.
-  - Conflict detection engine for overlapping employment dates, chronology anomalies, career gaps, and identity mismatches.
-  - Candidate review, manual entity updates, and approval workflows (`/api/v1/profiles/...`).
-
-- **Stage 4 — Job Description Intelligence**:
-  - Unstructured plain-text and pasted job description ingestion.
-  - Automatic extraction of title, company, location, employment type, and seniority levels.
-  - Requirement classification: Mandatory vs. Preferred qualifications, responsibilities, and experience limits.
-  - Reusable skill normalization and canonical taxonomy mapping (`k8s` → `Kubernetes`, `py` → `Python`, `postgres` → `PostgreSQL`).
-  - Strict skill distinction preservation (Java ≠ JavaScript, React ≠ Angular, AWS ≠ Azure).
-  - Quality and completeness warnings (missing titles, vague descriptions, contradictory experience demands).
-
-- **Stage 5 — Evidence-Based Skill Matching Engine**:
-  - Strict evidence-based matching: candidates never receive credit without verified profile evidence.
-  - Classification categories: `STRONG_MATCH`, `PARTIAL_MATCH`, `RELATED_MATCH`, `NO_EVIDENCE`, `CONFLICTED_EVIDENCE`, `NOT_ASSESSED`.
-  - Transferable skill relationship graph (e.g. FastAPI relates to Python/REST APIs; React relates to JavaScript/TypeScript).
-  - Experience matching with non-overlapping calendar duration calculation to prevent double-counting.
-  - Academic degree hierarchy evaluation and professional certification verification.
-  - Configurable weighted scoring model (Mandatory Skills 40%, Experience 20%, Preferred Skills 15%, Education 10%, Domain 10%, Certifications 5%).
-  - Missing mandatory skills penalty and conflict impact deductions.
-  - Structured gap analysis with actionable evidence development recommendations.
-  - Full traceability: every match links back to candidate entities and Stage 2 source documents.
-
-- **Stage 6 — Tailored Resume Generation & ATS Evaluation**:
-  - Truthful, evidence-backed tailored resume generation strictly grounded in candidate profile data (zero hallucinations).
-  - Clean single-column ATS typography with 0.75" margins, standard headers, and bulleted accomplishments.
-  - Dual document export: professional `.docx` via `python-docx` and vector-rendered `.pdf` via `PyMuPDF`.
-  - Consecutive version control (`v1`, `v2`, ...) with automated diffing and score progression tracking.
-  - Transparent 7-dimension ATS scoring engine: Mandatory Skill Coverage (30%), Preferred Skill Coverage (15%), Experience Alignment (20%), Education Alignment (10%), Keyword Relevance & Natural Frequency (10%), Document Structure & Parsability (10%), Readability & Formatting (5%).
-  - Anti-gaming keyword stuffing detection, formatting warnings, and actionable improvement recommendations.
-
-- **Stage 7 — Authentication, Authorization & Production Hardening**:
-  - Candidate registration and login with PBKDF2-HMAC-SHA256 password hashing (600,000 iterations, random salt).
-  - Cryptographically signed HS256 JWT access tokens with expiration validation (built-in standard library).
-  - Multi-tenant data isolation protecting candidate documents, profiles, generated resumes, and ATS evaluations.
-  - Insecure Direct Object Reference (IDOR) prevention returning 404 on cross-tenant resource access attempts.
-  - Production security headers: CSP, HSTS, X-Content-Type-Options: nosniff, X-Frame-Options: DENY, Referrer-Policy.
-  - Zero log leakage of candidate PII, passwords, or document text.
+* **Frontend (`user/apps/web`)**: React 19, Vite+, TanStack Router, TanStack Query, Tailwind CSS v4 (with OKLCH design tokens), Lingui i18n, Tiptap rich text editor, CodeMirror, Framer Motion.
+* **Backend (`user/apps/server`)**: Node.js Hono HTTP/oRPC engine, `@orpc/server`, Better Auth (Drizzle adapter), Model Context Protocol (MCP) server.
+* **Database & Cache**: PostgreSQL (via Drizzle ORM) & Redis (coordination, queues, agent streaming).
+* **Document Generation**: Vector PDF rendering via `@formepdf/core` and `@resvg/resvg-wasm`; DOCX export via `docx`.
+* **Mobile (`user/apps/mobile`)**: Expo 58 and React Native 0.88.
+* **Monorepo Tooling**: pnpm workspaces (`pnpm@12.18.0`) and Turborepo (`turbo ^2.11.11`).
 
 ---
 
-## 4. Quickstart — User Backend
+## 3. Brand Identity & Design System
+
+The application features the **AI Resume Agent** design system:
+* **Primary Palette**: Executive Navy/Indigo (`#0F172A`, `--ink`), Enterprise Slate (`#475569`, `--ink-2`), Crisp Canvas (`#F8FAFC`, `--bg`), Pure White Surfaces (`#FFFFFF`, `--surface`).
+* **Accent**: Electric Sapphire (`#2563EB`, `--accent`) with interactive hover (`#1D4ED8`, `--accent-hover`) and soft selection tint (`#EFF6FF`, `--accent-soft`).
+* **Typography**: Instrument Serif for editorial display headers; Figtree Variable for crisp, accessible UI typography.
+* **WCAG Compliance**: High-contrast ratios (> 4.8:1) across all text, controls, badges, and focus rings.
+
+---
+
+## 4. Local Development Quickstart
 
 ### Prerequisites
-- Python 3.13+
-- Virtual environment tool (`venv`)
+* Node.js 24+ (Node 26 recommended)
+* `pnpm@12.18.0` (`npm install -g pnpm@12.18.0` or `corepack enable`)
+* Docker Desktop (for PostgreSQL, Redis, SeaweedFS)
 
-### Setup & Execution
+### Startup Sequence
 ```bash
-# Navigate to the user backend
-cd user/backend
+# 1. Navigate to user workspace
+cd user
 
-# Create and activate a virtual environment
-python -m venv .venv
-# On Windows:
-.venv\Scripts\activate
-# On Linux/macOS:
-source .venv/bin/activate
+# 2. Launch supporting local services
+docker compose -f compose.dev.yml up -d
 
-# Install dependencies
-pip install -r requirements.txt
+# 3. Setup environment configuration
+cp .env.example .env.local
 
-# Run the test suite (84 automated tests)
-pytest -v
+# 4. Install dependencies
+pnpm install
 
-# Start the development server
-uvicorn app.main:create_app --factory --reload --port 8000
+# 5. Run database migrations
+pnpm db:migrate
+
+# 6. Compile PDF translation catalogs
+pnpm pdf:translations
+
+# 7. Start development servers
+pnpm dev
 ```
 
-The API will be available at `http://localhost:8000`. Interactive API documentation is available at `http://localhost:8000/docs`.
+* **Web UI**: `http://localhost:3000`
+* **API Server**: `http://localhost:3001`
 
 ---
 
-## 5. Security & Privacy
+## 5. Licensing & Legal Attribution
 
-- **Private Storage**: Raw candidate resumes and extracted plain text are stored in private, server-controlled directories outside web-accessible roots.
-- **Exclusion by Default**: `.env`, `.venv`, binary caches, local databases, and `storage/` directories are strictly excluded from source control via `.gitignore`.
-- **Zero Log Leakage**: Candidate personally identifiable information (PII) and resume text are never logged.
+AI Resume Agent candidate application is a derivative project built upon **Reactive Resume** by Amruth Pillai.
+In compliance with the **MIT License**, the original copyright notice is preserved in `user/LICENSE` and source package manifests:
 
----
-
-## 6. License & Legacy Notice
-
-The `resume_builder/` directory contains original hackathon implementation work created during the project's inception. It is retained to preserve historical context and feature ideas.
-
-The newly rebuilt platform in `user/` is published as open source under the **MIT License**.
+```text
+MIT License
+Copyright (c) 2026 Amruth Pillai
+```
+All original attribution, license notices, and third-party dependency disclosures are strictly maintained.
