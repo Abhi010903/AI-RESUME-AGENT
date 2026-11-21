@@ -317,3 +317,57 @@ def test_get_text_for_failed_extraction_returns_400(client: TestClient) -> None:
     assert response.json()["status"] == "error"
     assert response.json()["error"]["code"] == "EXTRACTION_FAILED"
 
+
+def test_docx_headers_footers_and_ordered_nested_tables(client: TestClient) -> None:
+    """Verify DOCX extraction captures headers, footers, and nested tables in document order."""
+    doc = docx.Document()
+    sec = doc.sections[0]
+    sec.header.paragraphs[0].text = "Header: Jane Doe Contact Info"
+    doc.add_heading("Profile Summary", level=1)
+    doc.add_paragraph("Lead Software Architect")
+
+    tbl = doc.add_table(rows=1, cols=1)
+    cell = tbl.cell(0, 0)
+    cell.paragraphs[0].text = "Core Competencies"
+    nested = cell.add_table(rows=1, cols=1)
+    nested.cell(0, 0).paragraphs[0].text = "Python, FastAPI, Docker"
+    cell.add_paragraph("Secondary Skills")
+
+    sec.footer.paragraphs[0].text = "Footer: Confidential"
+
+    buf = io.BytesIO()
+    doc.save(buf)
+    content = buf.getvalue()
+
+    files = [("files", ("complete_resume.docx", content, "application/vnd.openxmlformats-officedocument.wordprocessingml.document"))]
+    upload_res = client.post("/api/v1/resumes/upload", files=files)
+    assert upload_res.status_code == status.HTTP_201_CREATED
+    text = upload_res.json()["documents"][0]["extracted_text"]
+
+    assert "Header: Jane Doe Contact Info" in text
+    assert "## Profile Summary" in text
+    assert "Lead Software Architect" in text
+    assert "Core Competencies [Python, FastAPI, Docker] Secondary Skills" in text
+    assert "Footer: Confidential" in text
+
+
+def test_delete_resume_failure_keeps_record_for_retry(client: TestClient, monkeypatch: pytest.MonkeyPatch) -> None:
+    """When disk file removal fails, DELETE should abort and retain the DB record for retry."""
+    files = [("files", ("retry_test.pdf", _make_pdf("Retryable Resume"), "application/pdf"))]
+    upload_res = client.post("/api/v1/resumes/upload", files=files)
+    doc_id = upload_res.json()["documents"][0]["id"]
+
+    # Simulate disk deletion failure
+    import app.api.resumes as resumes_module
+
+    monkeypatch.setattr(resumes_module, "delete_upload_file", lambda path, upload_dir: False)
+
+    del_res = client.delete(f"/api/v1/resumes/{doc_id}")
+    assert del_res.status_code == status.HTTP_500_INTERNAL_SERVER_ERROR
+
+    # Verify the document still exists in the DB so user can retry
+    get_res = client.get(f"/api/v1/resumes/{doc_id}")
+    assert get_res.status_code == status.HTTP_200_OK
+    assert get_res.json()["id"] == doc_id
+
+

@@ -1,11 +1,12 @@
 """Document text extraction engine supporting PDF (PyMuPDF) and DOCX (python-docx)."""
 
+from collections.abc import Iterator
 from dataclasses import dataclass, field
 import io
 import logging
 import re
 import docx
-from docx.table import Table
+from docx.table import Table, _Cell
 from docx.text.paragraph import Paragraph
 import pymupdf
 
@@ -117,8 +118,66 @@ def extract_pdf_text(content: bytes) -> ExtractionResult:
             doc.close()
 
 
-def _extract_table_rows(table: Table) -> list[str]:
-    """Extract rows from a DOCX table, traversing nested tables and comparing cell identity."""
+def _iter_block_elements(parent_elem: object, doc: docx.Document) -> Iterator[str]:
+    """Yield extracted text blocks from XML container elements in document order.
+
+    Handles paragraphs, tables, and block-level structured document tags (w:sdt).
+    """
+    if not hasattr(parent_elem, "iterchildren"):
+        return
+
+    for child in parent_elem.iterchildren():
+        tag = child.tag.split("}")[-1]
+        if tag == "p":
+            p = Paragraph(child, doc)
+            text = p.text.strip()
+            if text:
+                if p.style and p.style.name and p.style.name.startswith("Heading"):
+                    yield f"## {text}"
+                else:
+                    yield text
+        elif tag == "tbl":
+            tbl = Table(child, doc)
+            t_rows = _extract_table_rows(tbl, doc)
+            if t_rows:
+                yield "\n".join(t_rows)
+        elif tag == "sdt":
+            for subchild in child.iterchildren():
+                if subchild.tag.split("}")[-1] == "sdtContent":
+                    yield from _iter_block_elements(subchild, doc)
+
+
+def _extract_cell_content(cell: _Cell, doc: docx.Document) -> str:
+    """Extract cell content in document order across paragraphs, nested tables, and SDTs."""
+    parts: list[str] = []
+
+    def _extract_from(container: object) -> None:
+        if not hasattr(container, "iterchildren"):
+            return
+        for child in container.iterchildren():
+            tag = child.tag.split("}")[-1]
+            if tag == "p":
+                p = Paragraph(child, cell)
+                t = p.text.strip().replace("\n", " ")
+                if t:
+                    parts.append(t)
+            elif tag == "tbl":
+                tbl = Table(child, doc)
+                nested_rows = _extract_table_rows(tbl, doc)
+                if nested_rows:
+                    nested_str = " | ".join(nested_rows)
+                    parts.append(f"[{nested_str}]")
+            elif tag == "sdt":
+                for subchild in child.iterchildren():
+                    if subchild.tag.split("}")[-1] == "sdtContent":
+                        _extract_from(subchild)
+
+    _extract_from(cell._tc)
+    return " ".join(parts).strip()
+
+
+def _extract_table_rows(table: Table, doc: docx.Document) -> list[str]:
+    """Extract rows from a DOCX table, traversing cells in document order and comparing cell XML identity."""
     table_rows: list[str] = []
     for row in table.rows:
         seen_tcs: set[object] = set()
@@ -129,15 +188,7 @@ def _extract_table_rows(table: Table) -> list[str]:
                 continue
             seen_tcs.add(cell._tc)
 
-            cell_text = cell.text.strip().replace("\n", " ")
-            # Recursively extract any nested tables inside this cell
-            if cell.tables:
-                nested_lines: list[str] = []
-                for nested_tbl in cell.tables:
-                    nested_lines.extend(_extract_table_rows(nested_tbl))
-                if nested_lines:
-                    cell_text = f"{cell_text} [{' | '.join(nested_lines)}]".strip()
-
+            cell_text = _extract_cell_content(cell, doc)
             cleaned_cells.append(cell_text)
 
         if any(cleaned_cells):
@@ -148,7 +199,7 @@ def _extract_table_rows(table: Table) -> list[str]:
 def extract_docx_text(content: bytes) -> ExtractionResult:
     """Extract text from DOCX bytes in document order using python-docx.
 
-    Preserves document order across paragraphs and tables.
+    Traverses headers, body paragraphs, tables, block content controls (w:sdt), and footers.
     """
     warnings: list[str] = []
     try:
@@ -163,23 +214,32 @@ def extract_docx_text(content: bytes) -> ExtractionResult:
 
     try:
         sections_text: list[str] = []
+        seen_hdrftr_parts: set[object] = set()
 
-        # Traverse document body elements in document order
-        for child in doc.element.body.iterchildren():
-            if child.tag.endswith("p"):
-                p = Paragraph(child, doc)
-                text = p.text.strip()
-                if not text:
-                    continue
-                if p.style and p.style.name and p.style.name.startswith("Heading"):
-                    sections_text.append(f"## {text}")
-                else:
-                    sections_text.append(text)
-            elif child.tag.endswith("tbl"):
-                tbl = Table(child, doc)
-                t_rows = _extract_table_rows(tbl)
-                if t_rows:
-                    sections_text.append("\n".join(t_rows))
+        # 1. Section Headers (deduplicating linked and shared header parts)
+        for section in doc.sections:
+            for hdr in (section.header, getattr(section, "first_page_header", None)):
+                if hdr is not None and not getattr(hdr, "is_linked_to_previous", False):
+                    hdr_part = getattr(hdr, "part", None)
+                    if hdr_part is not None:
+                        if hdr_part in seen_hdrftr_parts:
+                            continue
+                        seen_hdrftr_parts.add(hdr_part)
+                    sections_text.extend(_iter_block_elements(hdr._element, doc))
+
+        # 2. Document Body Elements (document order: paragraphs, tables, block content controls)
+        sections_text.extend(_iter_block_elements(doc.element.body, doc))
+
+        # 3. Section Footers (deduplicating linked and shared footer parts)
+        for section in doc.sections:
+            for ftr in (section.footer, getattr(section, "first_page_footer", None)):
+                if ftr is not None and not getattr(ftr, "is_linked_to_previous", False):
+                    ftr_part = getattr(ftr, "part", None)
+                    if ftr_part is not None:
+                        if ftr_part in seen_hdrftr_parts:
+                            continue
+                        seen_hdrftr_parts.add(ftr_part)
+                    sections_text.extend(_iter_block_elements(ftr._element, doc))
 
         full_text = "\n\n".join(sections_text)
         normalized = normalize_extracted_text(full_text)

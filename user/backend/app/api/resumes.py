@@ -280,11 +280,17 @@ def delete_resume(
         raise NotFoundError(f"Document '{document_id}' not found")
 
     storage_path = doc.storage_path
+    if storage_path:
+        deleted = delete_upload_file(storage_path, settings.resolved_upload_dir)
+        raw_file = (settings.resolved_upload_dir / storage_path).resolve()
+        if not deleted and raw_file.exists():
+            raise AppError(
+                "Failed to delete stored file from disk; deletion aborted for retryability.",
+                status_code=status.HTTP_500_INTERNAL_SERVER_ERROR,
+            )
+
     db.delete(doc)
     db.commit()
-
-    if storage_path:
-        delete_upload_file(storage_path, settings.resolved_upload_dir)
 
     logger.info("Deleted document %s", document_id)
     return {"status": "deleted", "document_id": document_id}
