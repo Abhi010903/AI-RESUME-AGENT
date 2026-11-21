@@ -187,8 +187,14 @@ def upload_resumes(
         doc_record.set_warnings(combined_warnings)
 
         db.add(doc_record)
-        db.commit()
-        db.refresh(doc_record)
+        try:
+            db.commit()
+            db.refresh(doc_record)
+        except Exception:
+            db.rollback()
+            if storage_path:
+                delete_upload_file(storage_path, settings.resolved_upload_dir)
+            raise
 
         if extraction.status == "completed":
             successful_count += 1
@@ -284,8 +290,9 @@ def delete_resume(
         deleted = delete_upload_file(storage_path, settings.resolved_upload_dir)
         raw_file = (settings.resolved_upload_dir / storage_path).resolve()
         if not deleted and raw_file.exists():
-            raise AppError(
-                "Failed to delete stored file from disk; deletion aborted for retryability.",
+            raise AppException(
+                message="Failed to delete stored file from disk; deletion aborted for retryability.",
+                code="STORAGE_DELETE_FAILED",
                 status_code=status.HTTP_500_INTERNAL_SERVER_ERROR,
             )
 

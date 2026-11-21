@@ -5,12 +5,16 @@ from dataclasses import dataclass, field
 import io
 import logging
 import re
+import threading
 import docx
 from docx.table import Table, _Cell
 from docx.text.paragraph import Paragraph
 import pymupdf
 
 logger = logging.getLogger("app.extractor")
+
+# Thread lock to serialize PyMuPDF C-library calls across worker threads
+_pdf_extraction_lock = threading.Lock()
 
 
 @dataclass
@@ -39,83 +43,85 @@ def extract_pdf_text(content: bytes) -> ExtractionResult:
     """Extract text and metadata from PDF bytes using PyMuPDF.
 
     Detects encryption, scanned/image-only pages, and preserves page boundaries.
+    Serialized across worker threads for C-library isolation.
     """
-    warnings: list[str] = []
-    doc = None
-    try:
-        doc = pymupdf.open(stream=content, filetype="pdf")
-    except Exception as exc:
-        logger.warning("Failed to parse PDF document: %s", exc)
-        return ExtractionResult(
-            status="failed",
-            warnings=["Malformed or corrupted PDF document"],
-            error_message=f"PDF parsing error: {exc}",
-        )
+    with _pdf_extraction_lock:
+        warnings: list[str] = []
+        doc = None
+        try:
+            doc = pymupdf.open(stream=content, filetype="pdf")
+        except Exception as exc:
+            logger.warning("Failed to parse PDF document: %s", exc)
+            return ExtractionResult(
+                status="failed",
+                warnings=["Malformed or corrupted PDF document"],
+                error_message=f"PDF parsing error: {exc}",
+            )
 
-    try:
-        if doc.is_encrypted:
-            # Attempt to authenticate with blank password
-            auth_success = doc.authenticate("")
-            if not auth_success:
+        try:
+            if doc.is_encrypted:
+                # Attempt to authenticate with blank password
+                auth_success = doc.authenticate("")
+                if not auth_success:
+                    return ExtractionResult(
+                        status="failed",
+                        warnings=["PDF is password-protected"],
+                        error_message="Document is encrypted and password-protected",
+                    )
+
+            page_count = len(doc)
+            if page_count == 0:
                 return ExtractionResult(
-                    status="failed",
-                    warnings=["PDF is password-protected"],
-                    error_message="Document is encrypted and password-protected",
+                    page_count=0,
+                    status="completed",
+                    warnings=["PDF contains 0 pages"],
+                    text="",
                 )
 
-        page_count = len(doc)
-        if page_count == 0:
+            extracted_pages: list[str] = []
+            total_images = 0
+            raw_digital_chars = 0
+
+            for idx, page in enumerate(doc, start=1):
+                page_text = page.get_text("text").strip()
+                image_list = page.get_images()
+                total_images += len(image_list)
+                # Measure actual digital character count before synthetic page markers are attached
+                raw_digital_chars += len(re.sub(r"\s", "", page_text))
+
+                if page_text:
+                    if page_count > 1:
+                        extracted_pages.append(f"--- Page {idx} ---\n{page_text}")
+                    else:
+                        extracted_pages.append(page_text)
+
+            full_text = "\n\n".join(extracted_pages)
+            normalized = normalize_extracted_text(full_text)
+
+            # Scanned PDF detection: image(s) present with minimal or no text measured from source
+            if raw_digital_chars < 50 and total_images > 0:
+                warnings.append(
+                    "Scanned PDF detected. Document contains minimal or no extractable digital text. OCR is not yet supported."
+                )
+            elif not normalized:
+                warnings.append("Document contains no readable text.")
+
             return ExtractionResult(
-                page_count=0,
+                text=normalized,
+                page_count=page_count,
                 status="completed",
-                warnings=["PDF contains 0 pages"],
-                text="",
+                warnings=warnings,
             )
-
-        extracted_pages: list[str] = []
-        total_images = 0
-        raw_digital_chars = 0
-
-        for idx, page in enumerate(doc, start=1):
-            page_text = page.get_text("text").strip()
-            image_list = page.get_images()
-            total_images += len(image_list)
-            # Measure actual digital character count before synthetic page markers are attached
-            raw_digital_chars += len(re.sub(r"\s", "", page_text))
-
-            if page_text:
-                if page_count > 1:
-                    extracted_pages.append(f"--- Page {idx} ---\n{page_text}")
-                else:
-                    extracted_pages.append(page_text)
-
-        full_text = "\n\n".join(extracted_pages)
-        normalized = normalize_extracted_text(full_text)
-
-        # Scanned PDF detection: image(s) present with minimal or no text measured from source
-        if raw_digital_chars < 50 and total_images > 0:
-            warnings.append(
-                "Scanned PDF detected. Document contains minimal or no extractable digital text. OCR is not yet supported."
+        except Exception as exc:
+            logger.error("Unexpected error during PDF extraction: %s", exc, exc_info=True)
+            return ExtractionResult(
+                status="failed",
+                warnings=["Unexpected error during text extraction"],
+                error_message=str(exc),
             )
-        elif not normalized:
-            warnings.append("Document contains no readable text.")
-
-        return ExtractionResult(
-            text=normalized,
-            page_count=page_count,
-            status="completed",
-            warnings=warnings,
-        )
-    except Exception as exc:
-        logger.error("Unexpected error during PDF extraction: %s", exc, exc_info=True)
-        return ExtractionResult(
-            status="failed",
-            warnings=["Unexpected error during text extraction"],
-            error_message=str(exc),
-        )
-    finally:
-        if doc is not None:
-            doc.close()
+        finally:
+            if doc is not None:
+                doc.close()
 
 
 def _iter_block_elements(parent_elem: object, doc: docx.Document) -> Iterator[str]:
@@ -218,7 +224,12 @@ def extract_docx_text(content: bytes) -> ExtractionResult:
 
         # 1. Section Headers (deduplicating linked and shared header parts)
         for section in doc.sections:
-            for hdr in (section.header, getattr(section, "first_page_header", None)):
+            headers_to_check = (
+                section.header,
+                getattr(section, "first_page_header", None),
+                getattr(section, "even_page_header", None),
+            )
+            for hdr in headers_to_check:
                 if hdr is not None and not getattr(hdr, "is_linked_to_previous", False):
                     hdr_part = getattr(hdr, "part", None)
                     if hdr_part is not None:
@@ -232,7 +243,12 @@ def extract_docx_text(content: bytes) -> ExtractionResult:
 
         # 3. Section Footers (deduplicating linked and shared footer parts)
         for section in doc.sections:
-            for ftr in (section.footer, getattr(section, "first_page_footer", None)):
+            footers_to_check = (
+                section.footer,
+                getattr(section, "first_page_footer", None),
+                getattr(section, "even_page_footer", None),
+            )
+            for ftr in footers_to_check:
                 if ftr is not None and not getattr(ftr, "is_linked_to_previous", False):
                     ftr_part = getattr(ftr, "part", None)
                     if ftr_part is not None:
