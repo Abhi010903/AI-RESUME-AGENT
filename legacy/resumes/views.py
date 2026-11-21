@@ -1,9 +1,9 @@
-from django.shortcuts import render, redirect
+import os
+import random
+from django.shortcuts import get_object_or_404, redirect, render
+import requests
 from .forms import ResumeForm
 from .models import Resume
-import random 
-from django.shortcuts import get_object_or_404
-import requests
 
 
 # Create your views here.
@@ -115,9 +115,13 @@ def delete_resume(request, pk):
 
 
 def generate_resume_with_llama(prompt):
+    hf_token = os.environ.get("HUGGINGFACE_API_TOKEN", "").strip()
+    if not hf_token:
+        return "Error: HUGGINGFACE_API_TOKEN environment variable is not configured."
+
     api_url = "https://api-inference.huggingface.co/models/meta-llama/Llama-3.2-3B-Instruct"
     headers = {
-        "Authorization": "Bearer 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"
+        "Authorization": f"Bearer {hf_token}"
     }
     data = {
         "inputs": prompt,

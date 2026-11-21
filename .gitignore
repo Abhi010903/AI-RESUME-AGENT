@@ -25,7 +25,6 @@ htmlcov/
 # Databases & local storage
 *.db
 *.sqlite3
-!resume_builder/db.sqlite3
 storage/
 user/backend/storage/
 
