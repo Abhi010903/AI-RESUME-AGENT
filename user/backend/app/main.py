@@ -10,8 +10,16 @@ from fastapi.exceptions import RequestValidationError
 from fastapi.middleware.cors import CORSMiddleware
 from starlette.exceptions import HTTPException as StarletteHTTPException
 from starlette.middleware.base import BaseHTTPMiddleware, RequestResponseEndpoint
+from app.api.applications import router as applications_router
+from app.api.ats import router as ats_router
+from app.api.auth import router as auth_router
+from app.api.generation import router as generation_router
 from app.api.health import router as health_router
+from app.api.jobs import router as jobs_router
+from app.api.matches import router as matches_router
+from app.api.profiles import router as profiles_router
 from app.api.resumes import router as resumes_router
+from app.api.workflow import router as workflow_router
 from app.config import Settings, get_settings
 from app.database import close_db_engine, get_engine, init_db
 from app.errors import (
@@ -126,9 +134,17 @@ def create_app(settings: Settings | None = None) -> FastAPI:
     app.add_exception_handler(StarletteHTTPException, starlette_http_exception_handler)
     app.add_exception_handler(Exception, unhandled_exception_handler)
 
-    # Register routers
+    # Register routers (specific static paths before parameterized wildcards)
     app.include_router(health_router)
+    app.include_router(workflow_router)
+    app.include_router(auth_router)
+    app.include_router(applications_router)
+    app.include_router(generation_router)
     app.include_router(resumes_router)
+    app.include_router(profiles_router)
+    app.include_router(jobs_router)
+    app.include_router(matches_router)
+    app.include_router(ats_router)
 
     return app
 

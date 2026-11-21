@@ -27,6 +27,8 @@ htmlcov/
 *.sqlite3
 storage/
 user/backend/storage/
+data/testing/results/
+data/testing/resumes/
 
 # IDE and OS
 .vscode/

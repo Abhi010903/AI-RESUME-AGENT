@@ -50,18 +50,18 @@ ai-resume-builder/
 
 ---
 
-## 3. Rebuilt Architecture (Phase 1 & Phase 2)
+## 3. Rebuilt Architecture (Stages 1 through 5)
 
 The rebuilt **User Backend** (`user/backend/`) delivers a modular, production-grade foundation:
 
-- **Phase 1 — Backend Foundation**:
+- **Stage 1 — Backend Foundation**:
   - FastAPI application factory with dynamic environment management.
   - SQLAlchemy 2.0 database abstraction (SQLite locally, forward-compatible with PostgreSQL).
   - Security hardening: Content Security Policy (CSP), HSTS, X-Content-Type-Options, X-Frame-Options, Referrer-Policy.
   - Request ID tracing propagated across all requests, responses, and structured logs.
   - Comprehensive health (`/health`) and readiness (`/ready`) probes.
 
-- **Phase 2 — Resume Ingestion & Extraction**:
+- **Stage 2 — Resume Ingestion & Extraction**:
   - Secure multi-document batch uploads (1–10 resumes per operation).
   - Binary file signature verification (`%PDF-` magic bytes, OpenXML ZIP structure) preventing MIME spoofing.
   - Zip bomb decompression thresholds (50MB cap) and path traversal sanitization.
@@ -69,6 +69,48 @@ The rebuilt **User Backend** (`user/backend/`) delivers a modular, production-gr
   - python-docx extraction engine preserving document order, section headers, footers, nested tables, and Structured Document Tags (`w:sdt`).
   - SHA-256 content deduplication avoiding redundant disk storage and extraction overhead.
   - Transaction rollback cleanup and durably retryable document deletion.
+
+- **Stage 3 — Candidate Profile Intelligence**:
+  - Multi-resume consolidation across 1–10 extracted candidate documents.
+  - Entity deduplication and fusion for work experiences, degrees, skills, and certifications.
+  - Source document traceability preserved for every extracted entity.
+  - Conflict detection engine for overlapping employment dates, chronology anomalies, career gaps, and identity mismatches.
+  - Candidate review, manual entity updates, and approval workflows (`/api/v1/profiles/...`).
+
+- **Stage 4 — Job Description Intelligence**:
+  - Unstructured plain-text and pasted job description ingestion.
+  - Automatic extraction of title, company, location, employment type, and seniority levels.
+  - Requirement classification: Mandatory vs. Preferred qualifications, responsibilities, and experience limits.
+  - Reusable skill normalization and canonical taxonomy mapping (`k8s` → `Kubernetes`, `py` → `Python`, `postgres` → `PostgreSQL`).
+  - Strict skill distinction preservation (Java ≠ JavaScript, React ≠ Angular, AWS ≠ Azure).
+  - Quality and completeness warnings (missing titles, vague descriptions, contradictory experience demands).
+
+- **Stage 5 — Evidence-Based Skill Matching Engine**:
+  - Strict evidence-based matching: candidates never receive credit without verified profile evidence.
+  - Classification categories: `STRONG_MATCH`, `PARTIAL_MATCH`, `RELATED_MATCH`, `NO_EVIDENCE`, `CONFLICTED_EVIDENCE`, `NOT_ASSESSED`.
+  - Transferable skill relationship graph (e.g. FastAPI relates to Python/REST APIs; React relates to JavaScript/TypeScript).
+  - Experience matching with non-overlapping calendar duration calculation to prevent double-counting.
+  - Academic degree hierarchy evaluation and professional certification verification.
+  - Configurable weighted scoring model (Mandatory Skills 40%, Experience 20%, Preferred Skills 15%, Education 10%, Domain 10%, Certifications 5%).
+  - Missing mandatory skills penalty and conflict impact deductions.
+  - Structured gap analysis with actionable evidence development recommendations.
+  - Full traceability: every match links back to candidate entities and Stage 2 source documents.
+
+- **Stage 6 — Tailored Resume Generation & ATS Evaluation**:
+  - Truthful, evidence-backed tailored resume generation strictly grounded in candidate profile data (zero hallucinations).
+  - Clean single-column ATS typography with 0.75" margins, standard headers, and bulleted accomplishments.
+  - Dual document export: professional `.docx` via `python-docx` and vector-rendered `.pdf` via `PyMuPDF`.
+  - Consecutive version control (`v1`, `v2`, ...) with automated diffing and score progression tracking.
+  - Transparent 7-dimension ATS scoring engine: Mandatory Skill Coverage (30%), Preferred Skill Coverage (15%), Experience Alignment (20%), Education Alignment (10%), Keyword Relevance & Natural Frequency (10%), Document Structure & Parsability (10%), Readability & Formatting (5%).
+  - Anti-gaming keyword stuffing detection, formatting warnings, and actionable improvement recommendations.
+
+- **Stage 7 — Authentication, Authorization & Production Hardening**:
+  - Candidate registration and login with PBKDF2-HMAC-SHA256 password hashing (600,000 iterations, random salt).
+  - Cryptographically signed HS256 JWT access tokens with expiration validation (built-in standard library).
+  - Multi-tenant data isolation protecting candidate documents, profiles, generated resumes, and ATS evaluations.
+  - Insecure Direct Object Reference (IDOR) prevention returning 404 on cross-tenant resource access attempts.
+  - Production security headers: CSP, HSTS, X-Content-Type-Options: nosniff, X-Frame-Options: DENY, Referrer-Policy.
+  - Zero log leakage of candidate PII, passwords, or document text.
 
 ---
 
@@ -93,7 +135,7 @@ source .venv/bin/activate
 # Install dependencies
 pip install -r requirements.txt
 
-# Run the test suite (42 tests)
+# Run the test suite (84 automated tests)
 pytest -v
 
 # Start the development server

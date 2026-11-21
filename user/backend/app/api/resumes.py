@@ -2,19 +2,23 @@
 
 import logging
 import uuid
+from pathlib import Path
 from fastapi import APIRouter, Depends, File, HTTPException, Query, UploadFile, status
+from fastapi.responses import FileResponse
 from sqlalchemy import select
 from sqlalchemy.orm import Session
+from app.api.auth import get_current_user_optional
 from app.config import Settings, get_settings
 from app.database import get_db
 from app.errors import AppException, NotFoundError
-from app.models import Document
+from app.models import Document, User
 from app.schemas import (
     BatchUploadResponse,
     DocumentListItemResponse,
     DocumentResponse,
     DocumentTextResponse,
 )
+from app.services.activity_logger import record_activity
 from app.services.extractor import extract_document_text
 from app.services.file_validator import (
     FileValidationError,
@@ -58,6 +62,7 @@ def upload_resumes(
     files: list[UploadFile] = File(..., description="1 to 10 resume files (PDF or DOCX)"),
     db: Session = Depends(get_db),
     settings: Settings = Depends(get_settings),
+    current_user: User | None = Depends(get_current_user_optional),
 ) -> BatchUploadResponse:
     """Ingest and extract up to 10 candidate resumes.
 
@@ -183,6 +188,7 @@ def upload_resumes(
             page_count=extraction.page_count,
             extracted_text=extraction.text,
             error_message=extraction.error_message,
+            user_id=current_user.id if current_user else None,
         )
         doc_record.set_warnings(combined_warnings)
 
@@ -198,6 +204,15 @@ def upload_resumes(
 
         if extraction.status == "completed":
             successful_count += 1
+            record_activity(
+                db=db,
+                user_id=current_user.id if current_user else None,
+                action="resume_uploaded",
+                title=f"Uploaded and parsed {doc_record.filename}",
+                description=f"Extracted {len(doc_record.extracted_text or '')} characters with {len(doc_record.warnings_list)} warnings",
+                entity_type="document",
+                entity_id=doc_record.id,
+            )
         else:
             failed_count += 1
 
@@ -221,9 +236,13 @@ def list_resumes(
     skip: int = Query(0, ge=0, description="Offset for pagination"),
     limit: int = Query(50, ge=1, le=100, description="Page limit"),
     db: Session = Depends(get_db),
+    current_user: User | None = Depends(get_current_user_optional),
 ) -> list[DocumentListItemResponse]:
     """List all ingested resume documents."""
-    docs = db.scalars(select(Document).order_by(Document.created_at.desc()).offset(skip).limit(limit)).all()
+    query = select(Document)
+    if current_user:
+        query = query.where(Document.user_id == current_user.id)
+    docs = db.scalars(query.order_by(Document.created_at.desc()).offset(skip).limit(limit)).all()
     return [DocumentListItemResponse.model_validate(doc) for doc in docs]
 
 
@@ -233,10 +252,14 @@ def list_resumes(
     summary="Get Resume Metadata and Extraction Details",
     description="Fetches processing status, extraction warnings, and full extracted text for a specific document.",
 )
-def get_resume(document_id: str, db: Session = Depends(get_db)) -> DocumentResponse:
+def get_resume(
+    document_id: str,
+    db: Session = Depends(get_db),
+    current_user: User | None = Depends(get_current_user_optional),
+) -> DocumentResponse:
     """Retrieve document metadata and extraction results."""
     doc = db.scalars(select(Document).where(Document.id == document_id)).first()
-    if not doc:
+    if not doc or (doc.user_id is not None and (current_user is None or doc.user_id != current_user.id)):
         raise NotFoundError(f"Document '{document_id}' not found")
     return _model_to_response(doc)
 
@@ -247,10 +270,14 @@ def get_resume(document_id: str, db: Session = Depends(get_db)) -> DocumentRespo
     summary="Get Extracted Text",
     description="Returns the clean extracted plain text and warnings for a document.",
 )
-def get_resume_text(document_id: str, db: Session = Depends(get_db)) -> DocumentTextResponse:
+def get_resume_text(
+    document_id: str,
+    db: Session = Depends(get_db),
+    current_user: User | None = Depends(get_current_user_optional),
+) -> DocumentTextResponse:
     """Retrieve only the extracted text for downstream profile processing."""
     doc = db.scalars(select(Document).where(Document.id == document_id)).first()
-    if not doc:
+    if not doc or (doc.user_id is not None and (current_user is None or doc.user_id != current_user.id)):
         raise NotFoundError(f"Document '{document_id}' not found")
     if doc.status == "failed":
         raise AppException(
@@ -269,6 +296,81 @@ def get_resume_text(document_id: str, db: Session = Depends(get_db)) -> Document
     )
 
 
+@router.get(
+    "/{document_id}/download",
+    summary="Download Original Uploaded Resume File",
+)
+def download_resume_file(
+    document_id: str,
+    db: Session = Depends(get_db),
+    settings: Settings = Depends(get_settings),
+    current_user: User | None = Depends(get_current_user_optional),
+) -> FileResponse:
+    """Download the raw stored resume document."""
+    doc = db.scalars(select(Document).where(Document.id == document_id)).first()
+    if not doc or (doc.user_id is not None and (current_user is None or doc.user_id != current_user.id)):
+        raise NotFoundError(f"Document '{document_id}' not found")
+
+    file_path = settings.resolved_upload_dir / doc.storage_path
+    if not file_path.exists():
+        raise NotFoundError(f"Raw file for document '{document_id}' not found on disk")
+
+    media_type = (
+        "application/pdf"
+        if doc.file_format == "pdf"
+        else "application/vnd.openxmlformats-officedocument.wordprocessingml.document"
+    )
+    return FileResponse(
+        path=file_path,
+        media_type=media_type,
+        filename=doc.filename,
+    )
+
+
+@router.post(
+    "/{document_id}/reprocess",
+    response_model=DocumentResponse,
+    summary="Reprocess and Re-extract Document",
+)
+def reprocess_resume(
+    document_id: str,
+    db: Session = Depends(get_db),
+    settings: Settings = Depends(get_settings),
+    current_user: User | None = Depends(get_current_user_optional),
+) -> DocumentResponse:
+    """Re-run extraction pipeline on an existing uploaded resume."""
+    doc = db.scalars(select(Document).where(Document.id == document_id)).first()
+    if not doc or (doc.user_id is not None and (current_user is None or doc.user_id != current_user.id)):
+        raise NotFoundError(f"Document '{document_id}' not found")
+
+    file_path = settings.resolved_upload_dir / doc.storage_path
+    if not file_path.exists():
+        raise NotFoundError(f"Raw file for document '{document_id}' not found on disk")
+
+    content = file_path.read_bytes()
+    extraction = extract_document_text(content, doc.file_format)
+
+    doc.status = extraction.status
+    doc.extracted_text = extraction.text
+    doc.page_count = extraction.page_count
+    doc.error_message = extraction.error_message
+    doc.set_warnings(extraction.warnings)
+
+    db.commit()
+    db.refresh(doc)
+    record_activity(
+        db=db,
+        user_id=current_user.id if current_user else None,
+        action="resume_processed",
+        title=f"Reprocessed extraction for {doc.filename}",
+        description=f"Status: {doc.status}, extracted {len(doc.extracted_text or '')} chars",
+        entity_type="document",
+        entity_id=doc.id,
+    )
+    logger.info("Reprocessed document %s with status %s", doc.id, doc.status)
+    return _model_to_response(doc)
+
+
 @router.delete(
     "/{document_id}",
     status_code=status.HTTP_200_OK,
@@ -279,12 +381,14 @@ def delete_resume(
     document_id: str,
     db: Session = Depends(get_db),
     settings: Settings = Depends(get_settings),
+    current_user: User | None = Depends(get_current_user_optional),
 ) -> dict[str, str]:
     """Delete document and stored file."""
     doc = db.scalars(select(Document).where(Document.id == document_id)).first()
-    if not doc:
+    if not doc or (doc.user_id is not None and (current_user is None or doc.user_id != current_user.id)):
         raise NotFoundError(f"Document '{document_id}' not found")
 
+    deleted_filename = doc.filename
     storage_path = doc.storage_path
     if storage_path:
         deleted = delete_upload_file(storage_path, settings.resolved_upload_dir)
@@ -298,6 +402,14 @@ def delete_resume(
 
     db.delete(doc)
     db.commit()
+    record_activity(
+        db=db,
+        user_id=current_user.id if current_user else None,
+        action="resume_deleted",
+        title=f"Deleted resume {deleted_filename}",
+        entity_type="document",
+        entity_id=document_id,
+    )
 
     logger.info("Deleted document %s", document_id)
     return {"status": "deleted", "document_id": document_id}

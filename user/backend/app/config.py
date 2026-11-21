@@ -3,7 +3,7 @@
 from functools import lru_cache
 from pathlib import Path
 from typing import Literal
-from pydantic import Field, field_validator
+from pydantic import Field, field_validator, model_validator
 from pydantic_settings import BaseSettings, SettingsConfigDict
 
 
@@ -37,10 +37,16 @@ class Settings(BaseSettings):
 
     # Resume Ingestion & Storage Settings
     upload_dir: str = "storage/uploads"
+    generated_resumes_dir: str = "storage/generated_resumes"
     max_upload_file_size: int = 10 * 1024 * 1024  # 10 MB per file
     max_upload_files: int = 10
     min_upload_files: int = 1
     allowed_extensions: list[str] = [".pdf", ".docx"]
+
+    # Authentication & Security (Stage 7)
+    secret_key: str = "dev-secret-key-change-in-production-at-least-32-bytes-long"
+    jwt_algorithm: str = "HS256"
+    access_token_expire_minutes: int = 1440  # 24 hours
 
     @field_validator("database_url", mode="before")
     @classmethod
@@ -73,6 +79,20 @@ class Settings(BaseSettings):
             return [str(item).strip() for item in value]
         return ["http://localhost:3000", "http://localhost:5173"]
 
+    @model_validator(mode="after")
+    def validate_production_secret_key(self) -> "Settings":
+        """Ensure production environment uses a dedicated, secure secret key."""
+        if self.env == "production":
+            disallowed_shipped_keys = {
+                "dev-secret-key-change-in-production-at-least-32-bytes-long",
+                "change-me-to-a-cryptographically-random-32-byte-secret-key",
+            }
+            if self.secret_key in disallowed_shipped_keys or len(self.secret_key) < 32:
+                raise ValueError(
+                    "In production, SECRET_KEY must be explicitly configured with a secure key containing at least 32 characters"
+                )
+        return self
+
     @property
     def is_sqlite(self) -> bool:
         """Check if the configured database is SQLite."""
@@ -89,6 +109,16 @@ class Settings(BaseSettings):
         path = Path(self.upload_dir)
         if not path.is_absolute():
             # Relative to user/backend directory
+            base_dir = Path(__file__).resolve().parent.parent
+            path = base_dir / path
+        path.mkdir(parents=True, exist_ok=True)
+        return path
+
+    @property
+    def resolved_generated_resumes_dir(self) -> Path:
+        """Return absolute path to generated resumes directory, creating it if necessary."""
+        path = Path(self.generated_resumes_dir)
+        if not path.is_absolute():
             base_dir = Path(__file__).resolve().parent.parent
             path = base_dir / path
         path.mkdir(parents=True, exist_ok=True)
