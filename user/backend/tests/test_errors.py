@@ -77,6 +77,7 @@ def test_validation_error_envelope(client: TestClient) -> None:
 def test_unhandled_exception_envelope(client: TestClient) -> None:
     """Unhandled internal errors should return 500 without leaking stack traces."""
     client.app.include_router(dummy_router)
+    client.app.debug = False
 
     response = client.get("/test/unhandled")
     assert response.status_code == status.HTTP_500_INTERNAL_SERVER_ERROR

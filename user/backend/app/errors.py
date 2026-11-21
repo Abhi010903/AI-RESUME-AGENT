@@ -1,5 +1,6 @@
 """Consistent API error handling and custom exception classes."""
 
+from collections.abc import Mapping
 import logging
 from typing import Any
 from fastapi import Request, status
@@ -57,10 +58,12 @@ def create_error_response(
     code: str,
     message: str,
     details: list[dict[str, Any]] | None = None,
+    headers: Mapping[str, str] | None = None,
 ) -> JSONResponse:
     """Helper to build consistent error envelope response."""
     return JSONResponse(
         status_code=status_code,
+        headers=dict(headers) if headers else None,
         content={
             "status": "error",
             "error": {
@@ -103,7 +106,7 @@ async def validation_exception_handler(request: Request, exc: RequestValidationE
 
 
 async def starlette_http_exception_handler(request: Request, exc: StarletteHTTPException) -> JSONResponse:
-    """Handle Starlette / FastAPI standard HTTP exceptions."""
+    """Handle Starlette / FastAPI standard HTTP exceptions, preserving headers."""
     code_map = {
         404: "NOT_FOUND",
         405: "METHOD_NOT_ALLOWED",
@@ -115,6 +118,7 @@ async def starlette_http_exception_handler(request: Request, exc: StarletteHTTPE
         status_code=exc.status_code,
         code=code,
         message=str(exc.detail),
+        headers=getattr(exc, "headers", None),
     )
 
 
@@ -125,4 +129,8 @@ async def unhandled_exception_handler(request: Request, exc: Exception) -> JSONR
         status_code=status.HTTP_500_INTERNAL_SERVER_ERROR,
         code="INTERNAL_SERVER_ERROR",
         message="An unexpected server error occurred",
+        headers={
+            "X-Content-Type-Options": "nosniff",
+            "X-Frame-Options": "DENY",
+        },
     )

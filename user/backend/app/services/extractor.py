@@ -5,6 +5,8 @@ import io
 import logging
 import re
 import docx
+from docx.table import Table
+from docx.text.paragraph import Paragraph
 import pymupdf
 
 logger = logging.getLogger("app.extractor")
@@ -71,11 +73,14 @@ def extract_pdf_text(content: bytes) -> ExtractionResult:
 
         extracted_pages: list[str] = []
         total_images = 0
+        raw_digital_chars = 0
 
         for idx, page in enumerate(doc, start=1):
             page_text = page.get_text("text").strip()
             image_list = page.get_images()
             total_images += len(image_list)
+            # Measure actual digital character count before synthetic page markers are attached
+            raw_digital_chars += len(re.sub(r"\s", "", page_text))
 
             if page_text:
                 if page_count > 1:
@@ -86,9 +91,8 @@ def extract_pdf_text(content: bytes) -> ExtractionResult:
         full_text = "\n\n".join(extracted_pages)
         normalized = normalize_extracted_text(full_text)
 
-        # Scanned PDF detection: image(s) present with minimal or no text
-        raw_char_count = len(re.sub(r"\s", "", normalized))
-        if raw_char_count < 50 and total_images > 0:
+        # Scanned PDF detection: image(s) present with minimal or no text measured from source
+        if raw_digital_chars < 50 and total_images > 0:
             warnings.append(
                 "Scanned PDF detected. Document contains minimal or no extractable digital text. OCR is not yet supported."
             )
@@ -113,10 +117,38 @@ def extract_pdf_text(content: bytes) -> ExtractionResult:
             doc.close()
 
 
-def extract_docx_text(content: bytes) -> ExtractionResult:
-    """Extract text from DOCX bytes using python-docx.
+def _extract_table_rows(table: Table) -> list[str]:
+    """Extract rows from a DOCX table, traversing nested tables and comparing cell identity."""
+    table_rows: list[str] = []
+    for row in table.rows:
+        seen_tcs: set[object] = set()
+        cleaned_cells: list[str] = []
+        for cell in row.cells:
+            # Compare underlying XML cell identity to correctly preserve distinct cells with identical text
+            if cell._tc in seen_tcs:
+                continue
+            seen_tcs.add(cell._tc)
 
-    Preserves headings, paragraphs, and tables.
+            cell_text = cell.text.strip().replace("\n", " ")
+            # Recursively extract any nested tables inside this cell
+            if cell.tables:
+                nested_lines: list[str] = []
+                for nested_tbl in cell.tables:
+                    nested_lines.extend(_extract_table_rows(nested_tbl))
+                if nested_lines:
+                    cell_text = f"{cell_text} [{' | '.join(nested_lines)}]".strip()
+
+            cleaned_cells.append(cell_text)
+
+        if any(cleaned_cells):
+            table_rows.append(" | ".join(cleaned_cells))
+    return table_rows
+
+
+def extract_docx_text(content: bytes) -> ExtractionResult:
+    """Extract text from DOCX bytes in document order using python-docx.
+
+    Preserves document order across paragraphs and tables.
     """
     warnings: list[str] = []
     try:
@@ -132,31 +164,22 @@ def extract_docx_text(content: bytes) -> ExtractionResult:
     try:
         sections_text: list[str] = []
 
-        # Extract text from paragraphs
-        for paragraph in doc.paragraphs:
-            text = paragraph.text.strip()
-            if not text:
-                continue
-            # Preserve headings format
-            if paragraph.style and paragraph.style.name and paragraph.style.name.startswith("Heading"):
-                sections_text.append(f"## {text}")
-            else:
-                sections_text.append(text)
-
-        # Extract text from tables
-        for table in doc.tables:
-            table_rows: list[str] = []
-            for row in table.rows:
-                row_cells = [cell.text.strip().replace("\n", " ") for cell in row.cells]
-                # Filter duplicate adjacent cells from merged table cells
-                cleaned_cells: list[str] = []
-                for cell in row_cells:
-                    if not cleaned_cells or cell != cleaned_cells[-1]:
-                        cleaned_cells.append(cell)
-                if any(cleaned_cells):
-                    table_rows.append(" | ".join(cleaned_cells))
-            if table_rows:
-                sections_text.append("\n".join(table_rows))
+        # Traverse document body elements in document order
+        for child in doc.element.body.iterchildren():
+            if child.tag.endswith("p"):
+                p = Paragraph(child, doc)
+                text = p.text.strip()
+                if not text:
+                    continue
+                if p.style and p.style.name and p.style.name.startswith("Heading"):
+                    sections_text.append(f"## {text}")
+                else:
+                    sections_text.append(text)
+            elif child.tag.endswith("tbl"):
+                tbl = Table(child, doc)
+                t_rows = _extract_table_rows(tbl)
+                if t_rows:
+                    sections_text.append("\n".join(t_rows))
 
         full_text = "\n\n".join(sections_text)
         normalized = normalize_extracted_text(full_text)

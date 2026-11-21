@@ -37,7 +37,7 @@ def get_engine(settings: Settings | None = None) -> Engine:
         }
 
         # In-memory SQLite requires StaticPool so connections share the same memory DB
-        if cfg.is_sqlite and ":memory:" in cfg.database_url:
+        if cfg.is_sqlite and (":memory:" in cfg.database_url or cfg.database_url in ("sqlite://", "sqlite:///")):
             from sqlalchemy.pool import StaticPool
 
             engine_kwargs["poolclass"] = StaticPool

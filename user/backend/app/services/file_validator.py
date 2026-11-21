@@ -81,6 +81,14 @@ def validate_file_signature(content: bytes, filename: str) -> tuple[str, list[st
                     raise FileValidationError(
                         f"File '{filename}' is a ZIP archive but does not contain a valid Word document structure"
                     )
+
+                # Defense against decompression bomb / excessive memory allocation
+                total_uncompressed_size = sum(info.file_size for info in zf.infolist())
+                max_uncompressed_limit = 50 * 1024 * 1024  # 50 MB safety cap
+                if total_uncompressed_size > max_uncompressed_limit:
+                    raise FileValidationError(
+                        f"File '{filename}' exceeds safe decompressed size limit ({total_uncompressed_size // (1024 * 1024)}MB)"
+                    )
         except zipfile.BadZipFile:
             raise FileValidationError(f"File '{filename}' is corrupted or not a valid DOCX file")
 

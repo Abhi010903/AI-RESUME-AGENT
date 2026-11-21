@@ -51,11 +51,14 @@ async def health_check(settings: Settings = Depends(get_settings)) -> HealthResp
     summary="Readiness Probe",
     description="Verifies database connectivity and operational dependencies.",
 )
-async def readiness_check(
+def readiness_check(
     response: Response,
     settings: Settings = Depends(get_settings),
 ) -> ReadyResponse:
-    """Verify backend and database readiness."""
+    """Verify backend and database readiness.
+
+    Runs synchronously on the threadpool so connection wait/timeout cannot block the event loop.
+    """
     db_ok, error_message = check_db_health()
     if not db_ok:
         response.status_code = status.HTTP_503_SERVICE_UNAVAILABLE

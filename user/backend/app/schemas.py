@@ -1,7 +1,8 @@
 """Pydantic request and response schemas for Resume Ingestion."""
 
 from datetime import datetime
-from pydantic import BaseModel, ConfigDict
+import json
+from pydantic import BaseModel, ConfigDict, field_validator
 
 
 class DocumentBase(BaseModel):
@@ -20,6 +21,20 @@ class DocumentBase(BaseModel):
     updated_at: datetime
 
     model_config = ConfigDict(from_attributes=True)
+
+    @field_validator("warnings", mode="before")
+    @classmethod
+    def parse_warnings_field(cls, value: object) -> list[str]:
+        """Safely parse warnings whether passed as list or JSON-encoded ORM column string."""
+        if isinstance(value, str):
+            try:
+                parsed = json.loads(value)
+                return parsed if isinstance(parsed, list) else [str(parsed)]
+            except Exception:
+                return [value]
+        if isinstance(value, list):
+            return [str(item) for item in value]
+        return []
 
 
 class DocumentListItemResponse(BaseModel):
@@ -54,6 +69,19 @@ class DocumentTextResponse(BaseModel):
     warnings: list[str] = []
 
     model_config = ConfigDict(from_attributes=True)
+
+    @field_validator("warnings", mode="before")
+    @classmethod
+    def parse_warnings_field(cls, value: object) -> list[str]:
+        if isinstance(value, str):
+            try:
+                parsed = json.loads(value)
+                return parsed if isinstance(parsed, list) else [str(parsed)]
+            except Exception:
+                return [value]
+        if isinstance(value, list):
+            return [str(item) for item in value]
+        return []
 
 
 class BatchUploadResponse(BaseModel):

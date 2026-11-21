@@ -83,7 +83,7 @@ class RequestContextMiddleware(BaseHTTPMiddleware):
 @asynccontextmanager
 async def lifespan(app: FastAPI) -> AsyncGenerator[None, None]:
     """Manage application startup and graceful shutdown."""
-    settings = get_settings()
+    settings = getattr(app.state, "settings", None) or get_settings()
     setup_logging(settings)
     engine = get_engine(settings)
     init_db(engine)
@@ -104,6 +104,7 @@ def create_app(settings: Settings | None = None) -> FastAPI:
         redoc_url="/redoc" if not cfg.is_production else None,
         lifespan=lifespan,
     )
+    app.state.settings = cfg
 
     if settings is not None:
         app.dependency_overrides[get_settings] = lambda: settings

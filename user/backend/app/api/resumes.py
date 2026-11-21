@@ -54,12 +54,16 @@ def _model_to_response(doc: Document) -> DocumentResponse:
     summary="Upload and Ingest Resumes",
     description="Accepts 1 to 10 resume documents (PDF or DOCX), validates signatures, and extracts structured text.",
 )
-async def upload_resumes(
+def upload_resumes(
     files: list[UploadFile] = File(..., description="1 to 10 resume files (PDF or DOCX)"),
     db: Session = Depends(get_db),
     settings: Settings = Depends(get_settings),
 ) -> BatchUploadResponse:
-    """Ingest and extract up to 10 candidate resumes."""
+    """Ingest and extract up to 10 candidate resumes.
+
+    Runs as a standard synchronous endpoint so blocking I/O (disk writes, DB commits,
+    and CPU-bound document parsing) runs on FastAPI's threadpool rather than blocking the event loop.
+    """
     if not files or len(files) < settings.min_upload_files or len(files) > settings.max_upload_files:
         raise AppException(
             message=f"Upload batch must contain between {settings.min_upload_files} and {settings.max_upload_files} files",
@@ -74,17 +78,19 @@ async def upload_resumes(
     for upload in files:
         raw_name = upload.filename or "unnamed_document"
         safe_name = sanitize_filename(raw_name)
-        content = await upload.read()
+
+        # Bounded read to prevent memory exhaustion from oversized malicious payloads
+        content = upload.file.read(settings.max_upload_file_size + 1)
         file_size = len(content)
 
-        # 1. Size check
+        # 1. Size check with bounded memory consumption
         if file_size > settings.max_upload_file_size:
             failed_doc = Document(
                 id=str(uuid.uuid4()),
                 filename=safe_name,
                 file_format=safe_name.split(".")[-1].lower() if "." in safe_name else "unknown",
                 file_size=file_size,
-                file_hash=compute_file_hash(content) if content else "",
+                file_hash="",
                 storage_path="",
                 status="failed",
                 error_message=f"File exceeds maximum allowed size ({settings.max_upload_file_size // (1024 * 1024)}MB)",
@@ -273,10 +279,12 @@ def delete_resume(
     if not doc:
         raise NotFoundError(f"Document '{document_id}' not found")
 
-    if doc.storage_path:
-        delete_upload_file(doc.storage_path, settings.resolved_upload_dir)
-
+    storage_path = doc.storage_path
     db.delete(doc)
     db.commit()
+
+    if storage_path:
+        delete_upload_file(storage_path, settings.resolved_upload_dir)
+
     logger.info("Deleted document %s", document_id)
     return {"status": "deleted", "document_id": document_id}

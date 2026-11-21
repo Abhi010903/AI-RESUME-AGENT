@@ -33,7 +33,7 @@ class Settings(BaseSettings):
     database_url: str = "sqlite:///./resume_agent.db"
 
     # CORS configuration
-    cors_origins: list[str] = ["http://localhost:3000", "http://localhost:5173"]
+    cors_origins: list[str] | str = ["http://localhost:3000", "http://localhost:5173"]
 
     # Resume Ingestion & Storage Settings
     upload_dir: str = "storage/uploads"
@@ -62,8 +62,12 @@ class Settings(BaseSettings):
             value = value.strip()
             if value.startswith("[") and value.endswith("]"):
                 import json
-
-                return json.loads(value)
+                try:
+                    parsed = json.loads(value)
+                    if isinstance(parsed, list):
+                        return [str(item).strip() for item in parsed]
+                except Exception:
+                    pass
             return [origin.strip() for origin in value.split(",") if origin.strip()]
         if isinstance(value, list):
             return [str(item).strip() for item in value]
