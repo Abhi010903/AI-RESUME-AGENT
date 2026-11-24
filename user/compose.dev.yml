@@ -5,15 +5,15 @@ services:
     image: postgres:latest
     restart: unless-stopped
     environment:
-      POSTGRES_DB: postgres
-      POSTGRES_USER: postgres
-      POSTGRES_PASSWORD: postgres
+      POSTGRES_DB: resume_agent
+      POSTGRES_USER: resume_agent
+      POSTGRES_PASSWORD: resume_agent_secret
     volumes:
       - postgres_data:/var/lib/postgresql
     ports:
       - "127.0.0.1:5432:5432"
     healthcheck:
-      test: ["CMD-SHELL", "pg_isready -U postgres -d postgres"]
+      test: ["CMD-SHELL", "pg_isready -U resume_agent -d resume_agent || pg_isready -U postgres -d postgres"]
       start_period: 10s
       interval: 30s
       timeout: 10s

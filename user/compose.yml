@@ -7,9 +7,9 @@ services:
     networks:
       - data_network
     environment:
-      - POSTGRES_DB=postgres
-      - POSTGRES_USER=postgres
-      - POSTGRES_PASSWORD=postgres
+      - POSTGRES_DB=resume_agent
+      - POSTGRES_USER=resume_agent
+      - POSTGRES_PASSWORD=resume_agent_secret
     # Not exposed on the host by default: these credentials are public, and Docker's published ports bypass
     # host firewalls. Uncomment the ports block below if you need host access for tooling.
     # ports:
@@ -17,7 +17,7 @@ services:
     volumes:
       - postgres_data:/var/lib/postgresql
     healthcheck:
-      test: ["CMD", "pg_isready", "-U", "postgres", "-d", "postgres"]
+      test: ["CMD-SHELL", "pg_isready -U resume_agent -d resume_agent || pg_isready -U postgres -d postgres"]
       start_period: 10s
       interval: 30s
       timeout: 10s
